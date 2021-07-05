@@ -4,19 +4,19 @@ from JoblicantApp.models import Application, CommonInformation
 class ApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Application
-        fields = ('JobId',
+        fields = ('ApplicationId',
                   'JobTitle',
                   'CompanyName',
                   'DateCompleted',
                   'Status',
                   'InterviewDate',
-                  'Review'
-                  )
+                  'Review')
 
 class CommonInformationSerializer(serializers.ModelSerializer):
     class Meta:
         model = CommonInformation
-        fields = ('ResumeFileName',
+        fields = ('CommonInformationId',
+                  'ResumeFileName',
                   'FullName',
                   'Email',
                   'Phone',
@@ -25,6 +25,5 @@ class CommonInformationSerializer(serializers.ModelSerializer):
                   'Twitter',
                   'Github',
                   'Portfolio',
-                  'OtherWebsite'
-                )
+                  'OtherWebsite')
                   

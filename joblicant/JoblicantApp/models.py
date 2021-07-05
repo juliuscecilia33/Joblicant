@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Application(models.Model):
-    JobId = models.AutoField(primary_key=True)
+    ApplicationId = models.AutoField(primary_key=True)
     JobTitle = models.CharField(max_length=100)
     CompanyName = models.CharField(max_length=100)
     DateCompleted = models.DateField()
@@ -22,6 +22,7 @@ class Application(models.Model):
     Review = models.CharField(max_length=15, choices=RESULT_OPTIONS)
 
 class CommonInformation(models.Model):
+    CommonInformationId = models.AutoField(primary_key=True)
     ResumeFileName = models.CharField(max_length=100)
     FullName = models.CharField(max_length=100)
     Email = models.CharField(max_length=100)
