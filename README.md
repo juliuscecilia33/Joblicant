@@ -5,6 +5,8 @@
 <br />
 <br />
 
+## Mockups
+
 ![Joblicant](https://github.com/juliuscecilia33/Joblicant/blob/main/mockups/DetailedDashboard.png)
 <br />
 ![Joblicant](https://github.com/juliuscecilia33/Joblicant/blob/main/mockups/Dashboard.png)
