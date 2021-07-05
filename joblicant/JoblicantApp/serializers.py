@@ -4,7 +4,7 @@ from JoblicantApp.models import Application, CommonInformation
 class ApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Application
-        fields = ('ApplicationId',
+        fields = ('AppId',
                   'JobTitle',
                   'CompanyName',
                   'DateCompleted',
@@ -15,7 +15,7 @@ class ApplicationSerializer(serializers.ModelSerializer):
 class CommonInformationSerializer(serializers.ModelSerializer):
     class Meta:
         model = CommonInformation
-        fields = ('CommonInformationId',
+        fields = ('CommonId',
                   'ResumeFileName',
                   'FullName',
                   'Email',

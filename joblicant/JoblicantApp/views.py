@@ -26,7 +26,7 @@ def applicationApi(request,id=0):
     
     elif request.method=='PUT':
         application_data = JSONParser().parse(request)
-        application=Application.objects.get(ApplicationId=application_data['ApplicationId'])
+        application=Application.objects.get(AppId=application_data['AppId'])
         application_serializer=ApplicationSerializer(application,data=application_data)
         if application_serializer.is_valid():
             application_serializer.save()
@@ -34,7 +34,7 @@ def applicationApi(request,id=0):
         return JsonResponse("Failed to Update.", safe=False)
 
     elif request.method=='DELETE':
-        application=Application.objects.get(ApplicationId=id)
+        application=Application.objects.get(AppId=id)
         application.delete()
         return JsonResponse("Deleted Successfully!!", safe=False)
 
@@ -55,7 +55,7 @@ def commonInformationApi(request,id=0):
     
     elif request.method=='PUT':
         common_information_data = JSONParser().parse(request)
-        common_information=CommonInformation.objects.get(CommonInformationId=common_information_data['CommonInformationId'])
+        common_information=CommonInformation.objects.get(CommonId=common_information_data['CommonId'])
         common_information_serializer=CommonInformationSerializer(common_information,data=common_information_data)
         if common_information_serializer.is_valid():
             common_information_serializer.save()
@@ -63,7 +63,7 @@ def commonInformationApi(request,id=0):
         return JsonResponse("Failed to Update.", safe=False)
 
     elif request.method=='DELETE':
-        common_information=CommonInformation.objects.get(CommonInformationId=id)
+        common_information=CommonInformation.objects.get(CommonId=id)
         common_information.delete()
         return JsonResponse("Deleted Successfully!!", safe=False)
 
