@@ -9,15 +9,19 @@ class Application(models.Model):
     DateCompleted = models.DateField()
     STATUS_OPTIONS = (
         ('S', 'Sent'),
-        ('R', 'Rejected'),
         ('I1', 'Interview[1]'),
         ('I2', 'Interview[2]'),
         ('I3', 'Interview[3]'),
     )
-    Status = models.CharField(max_length=1, choices=STATUS_OPTIONS)
+    RESULT_OPTIONS = (
+        ('A', 'Accepted'),
+        ('R', 'Rejected')
+    )
+    Status = models.CharField(max_length=15, choices=STATUS_OPTIONS)
     InterviewDate = models.DateField()
+    Review = models.CharField(max_length=15, choices=RESULT_OPTIONS)
 
-class ApplicationCopy(models.Model):
+class CommonInformation(models.Model):
     ResumeFileName = models.CharField(max_length=100)
     FullName = models.CharField(max_length=100)
     Email = models.CharField(max_length=100)
