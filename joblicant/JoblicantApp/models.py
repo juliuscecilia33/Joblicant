@@ -1,35 +1,32 @@
 from django.db import models
 
+SENT="SENT"
+INTERVIEWONE="INTERVIEWONE"
+INTERVIEWTWO="INTERVIEWTWO"
+INTERVIEWTHREE="INTERVIEWTHREE"
+ACCEPTED="ACCEPTED"
+REJECTED="REJECTED"
+
 # Create your models here.
 
 class Application(models.Model):
     AppId = models.AutoField(primary_key=True)
     JobTitle = models.CharField(max_length=100)
     CompanyName = models.CharField(max_length=100)
-    DateCompleted = models.DateField()
-    STATUS_OPTIONS = (
-        ('S', 'Sent'),
-        ('I1', 'Interview[1]'),
-        ('I2', 'Interview[2]'),
-        ('I3', 'Interview[3]'),
-    )
-    RESULT_OPTIONS = (
-        ('A', 'Accepted'),
-        ('R', 'Rejected')
-    )
-    Status = models.CharField(max_length=15, choices=STATUS_OPTIONS)
-    InterviewDate = models.DateField()
-    Review = models.CharField(max_length=15, choices=RESULT_OPTIONS)
+    DateCompleted = models.DateField(blank=True, null=True)
+    Status = models.CharField(max_length=100)
+    InterviewDate = models.DateField(blank=True, null=True)
+    Result = models.CharField(max_length=100, blank=True, null=True)
 
 class CommonInformation(models.Model):
     CommonId = models.AutoField(primary_key=True)
-    ResumeFileName = models.CharField(max_length=100)
-    FullName = models.CharField(max_length=100)
-    Email = models.CharField(max_length=100)
-    Phone = models.IntegerField()
-    CurrentCompany = models.CharField(max_length=100)
-    LinkedIn = models.CharField(max_length=100)
-    Twitter = models.CharField(max_length=100)
-    Github = models.CharField(max_length=100)
-    Portfolio = models.CharField(max_length=100)
-    OtherWebsite = models.CharField(max_length=100)
+    ResumeFileName = models.CharField(max_length=100, blank=True, null=True)
+    FullName = models.CharField(max_length=100, blank=True, null=True)
+    Email = models.CharField(max_length=100, blank=True, null=True)
+    Phone = models.IntegerField(blank=True, null=True)
+    CurrentCompany = models.CharField(max_length=100, blank=True, null=True)
+    LinkedIn = models.CharField(max_length=100, blank=True, null=True)
+    Twitter = models.CharField(max_length=100, blank=True, null=True)
+    Github = models.CharField(max_length=100, blank=True, null=True)
+    Portfolio = models.CharField(max_length=100, blank=True, null=True)
+    OtherWebsite = models.CharField(max_length=100, blank=True, null=True)
