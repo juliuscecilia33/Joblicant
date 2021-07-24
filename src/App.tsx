@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { NavbarContainer } from "./containers";
 import axios from "axios";
 
 function App() {
@@ -30,9 +31,9 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
+    <>
+      <NavbarContainer />
+    </>
   );
 }
 

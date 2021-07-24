@@ -4,8 +4,9 @@ import { Container, Logo, Tabs, Tab } from "./styles/navbar";
 
 type Props = {
   children?: React.ReactNode;
-  icon: string;
+  icon?: string;
   name?: string;
+  active?: boolean | undefined;
 };
 
 export default function Navbar({ children, ...restProps }: Props) {
@@ -24,9 +25,15 @@ Navbar.Tabs = function NavbarTabs({ children, ...restProps }: Props) {
   return <Tabs {...restProps}>{children}</Tabs>;
 };
 
-Navbar.Tab = function NavbarTab({ name, icon, children, ...restProps }: Props) {
+Navbar.Tab = function NavbarTab({
+  active,
+  name,
+  icon,
+  children,
+  ...restProps
+}: Props) {
   return (
-    <Tab {...restProps}>
+    <Tab active={active} {...restProps}>
       <i className={icon}></i>
       <p>{name}</p>
     </Tab>
