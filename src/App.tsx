@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavbarContainer } from "./containers";
+import { NavbarContainer, CreateContainer } from "./containers";
 import axios from "axios";
 
 function App() {
@@ -33,6 +33,7 @@ function App() {
   return (
     <>
       <NavbarContainer />
+      <CreateContainer />
     </>
   );
 }
