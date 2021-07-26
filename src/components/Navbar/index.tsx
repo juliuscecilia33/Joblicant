@@ -3,6 +3,7 @@ import React from "react";
 import { Container, Logo, Tabs, Tab } from "./styles/navbar";
 
 type Props = {
+  onClick?: any;
   children?: React.ReactNode;
   icon?: string;
   name?: string;
@@ -26,6 +27,7 @@ Navbar.Tabs = function NavbarTabs({ children, ...restProps }: Props) {
 };
 
 Navbar.Tab = function NavbarTab({
+  onClick,
   active,
   name,
   icon,
@@ -33,7 +35,7 @@ Navbar.Tab = function NavbarTab({
   ...restProps
 }: Props) {
   return (
-    <Tab active={active} {...restProps}>
+    <Tab onClick={onClick} active={active!} {...restProps}>
       <i className={icon}></i>
       <p>{name}</p>
     </Tab>

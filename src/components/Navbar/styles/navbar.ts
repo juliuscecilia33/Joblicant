@@ -9,13 +9,17 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 7vh;
+  height: 6vh;
   background: #1c2031;
   padding: 0 1.5rem;
+  position: relative;
 `;
 
 export const Logo = styled.div`
   cursor: pointer;
+  position: absolute;
+  margin: auto 0;
+  left: 1.3%;
 
   img {
     width: 160px;
