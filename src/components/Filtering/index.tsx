@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container, Filter, NoFilter } from "./styles/filtering";
+import { Container, Search, NoSearch, NoFilter } from "./styles/filtering";
 
 type Props = {
   onClick?: any;
@@ -13,20 +13,36 @@ export default function Filtering({ children, ...restProps }: Props) {
   return <Container {...restProps}>{children}</Container>;
 }
 
-Filtering.Filter = function FilteringFilter({
+Filtering.Search = function SearchingFilter({
   name,
   children,
   ...restProps
 }: Props) {
   return (
-    <Filter {...restProps}>
+    <Search {...restProps}>
       <div>
-        {name}
+        <p>{name}</p>
         <i className="fas fa-sort-amount-up"></i>
         <i className="fas fa-sort-amount-down-alt"></i>
       </div>
       <input placeholder={name} />
-    </Filter>
+    </Search>
+  );
+};
+
+Filtering.NoSearch = function FilteringNoSearch({
+  name,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <NoSearch {...restProps}>
+      <div>
+        <p>{name}</p>
+        <i className="fas fa-sort-amount-up"></i>
+        <i className="fas fa-sort-amount-down-alt"></i>
+      </div>
+    </NoSearch>
   );
 };
 
@@ -37,11 +53,7 @@ Filtering.NoFilter = function FilteringNoFilter({
 }: Props) {
   return (
     <NoFilter {...restProps}>
-      <div>
-        {name}
-        <i className="fas fa-sort-amount-up"></i>
-        <i className="fas fa-sort-amount-down-alt"></i>
-      </div>
+      <p>{name}</p>
     </NoFilter>
   );
 };
