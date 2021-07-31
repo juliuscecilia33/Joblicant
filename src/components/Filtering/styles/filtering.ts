@@ -5,7 +5,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 9vh;
+  height: 10vh;
   background: linear-gradient(
     268.95deg,
     #33384e 4.06%,
@@ -13,7 +13,7 @@ export const Container = styled.div`
     #33384e 99.53%
   );
   border-radius: 20px 20px 0px 0px;
-  padding: 0 0.5rem;
+  padding: 0 2rem;
   border-bottom: 1px solid #50e3c2;
 `;
 
@@ -30,15 +30,16 @@ export const Search = styled.div`
     p {
       font-family: Lato;
       font-style: normal;
-      font-weight: 500;
-      font-size: 14px;
+      font-weight: 600;
+      font-size: 15px;
       color: #50e3c2;
+      margin-bottom: 0.5rem;
     }
 
     i {
       color: rgba(255, 255, 255, 0.53);
-      font-size: 14px;
-      margin: 0 0.5rem;
+      font-size: 16px;
+      margin-left: 0.5rem;
     }
   }
 
@@ -65,15 +66,15 @@ export const NoSearch = styled.div`
     p {
       font-family: Lato;
       font-style: normal;
-      font-weight: 500;
-      font-size: 14px;
+      font-weight: 600;
+      font-size: 15px;
       color: #50e3c2;
     }
 
     i {
       color: rgba(255, 255, 255, 0.53);
-      font-size: 14px;
-      margin: 0 0.5rem;
+      font-size: 16px;
+      margin-left: 0.5rem;
     }
   }
 `;
@@ -87,8 +88,8 @@ export const NoFilter = styled.div`
   p {
     font-family: Lato;
     font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
+    font-weight: 600;
+    font-size: 15px;
     color: #50e3c2;
   }
 `;

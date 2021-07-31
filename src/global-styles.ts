@@ -26,14 +26,14 @@ export const GlobalStyles = createGlobalStyle`
         overflow-y: visible;
 
         &::-webkit-scrollbar {
-            width: 10px;
-            background-color: #F6F6F2;
+            width: 10.5px;
+            background-color: #262A3A;
 
             border-radius: 15px;
         }
 
         &::-webkit-scrollbar-thumb {
-            background-color: #c4c4c4;
+            background: linear-gradient(242.46deg, #16B4EB 9.2%, #50E3C2 89.53%);
             border-radius: 15px;
         }
     }
