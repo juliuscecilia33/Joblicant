@@ -6,7 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   height: 89vh;
-  margin: 1.8rem auto;
+  margin: 2rem auto;
   background: linear-gradient(180deg, #30364f 0%, rgba(48, 54, 79, 0) 201.47%);
   box-shadow: 0px 46px 69px #17122b;
   border-radius: 20px;

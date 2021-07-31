@@ -50,6 +50,20 @@ export const Search = styled.div`
     background: rgba(255, 255, 255, 0.15);
     border: 1px solid #50e3c2;
     border-radius: 10px;
+    outline: none;
+    color: #ffffff;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    transition: 0.3s ease all;
+
+    &:focus,
+    &:hover {
+      background: rgba(255, 255, 255, 0.35);
+      &::placeholder {
+        color: #ffffff;
+      }
+    }
   }
 `;
 
@@ -83,7 +97,7 @@ export const NoFilter = styled.div`
   width: 11.5%;
   height: 100%;
   display: flex;
-  justify-content: center;
+  align-items: center;
 
   p {
     font-family: Lato;
