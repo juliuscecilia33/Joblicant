@@ -8,7 +8,7 @@ export const Container = styled.div`
   height: 10vh;
   border-radius: 20px 20px 0px 0px;
   padding: 0 2rem;
-  border-bottom: 1px solid #50e3c2;
+  border-bottom: 1px solid #495586;
 `;
 
 export const SearchField = styled.div`
@@ -72,9 +72,7 @@ export const NoFilterField = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+  padding-right: 0.7rem;
 
   p {
     font-family: Lato;
@@ -82,6 +80,9 @@ export const NoFilterField = styled.div`
     font-weight: 600;
     font-size: 15px;
     color: #ffffff;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
 `;
 
