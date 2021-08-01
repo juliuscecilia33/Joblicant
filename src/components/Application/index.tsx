@@ -13,6 +13,8 @@ type Props = {
   onClick?: any;
   children?: React.ReactNode;
   id?: any;
+  openDetails?: boolean;
+  setOpenDetails?: (open: boolean) => any;
 };
 
 export default function Application({ children, ...restProps }: Props) {
@@ -67,6 +69,8 @@ Application.NoFilterField = function ApplicationNoFilterField({
 };
 
 Application.Actions = function ApplicationActions({
+  openDetails,
+  setOpenDetails,
   children,
   ...restProps
 }: Props) {
@@ -75,7 +79,7 @@ Application.Actions = function ApplicationActions({
       <button>
         <i className="fas fa-ellipsis-v"></i>
       </button>
-      <button>
+      <button onClick={() => setOpenDetails!(!openDetails)}>
         <i className="fas fa-level-down-alt"></i>
       </button>
     </Actions>

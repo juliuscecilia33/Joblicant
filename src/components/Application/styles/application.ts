@@ -95,15 +95,20 @@ export const Actions = styled.div`
   right: 1%;
   margin: auto 0;
 
-  i {
-    color: #acacac;
-    transition: 0.3s ease all;
-    margin-right: 1rem;
-    cursor: pointer;
-    font-size: 18px;
+  button {
+    background: none;
+    outline: none;
+    border: none;
+    i {
+      color: #acacac;
+      transition: 0.3s ease all;
+      margin-right: 1rem;
+      cursor: pointer;
+      font-size: 18px;
 
-    &:hover {
-      color: #50e3c2;
+      &:hover {
+        color: #50e3c2;
+      }
     }
   }
 `;

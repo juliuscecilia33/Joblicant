@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { Application } from "../components";
 
 export function ApplicationContainer() {
-  const [openDetails, setOpenDetails] = useState(false);
+  const [openDetails, setOpenDetails] = useState<boolean | undefined>(false);
+
+  console.log(openDetails);
 
   return (
     <Application>
@@ -17,7 +19,10 @@ export function ApplicationContainer() {
       <Application.NoFilterField>
         Hello these are my notes
       </Application.NoFilterField>
-      <Application.Actions />
+      <Application.Actions
+        openDetails={openDetails}
+        setOpenDetails={setOpenDetails}
+      />
     </Application>
   );
 }
