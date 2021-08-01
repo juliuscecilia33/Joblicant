@@ -9,6 +9,7 @@ export const Container = styled.div`
   border-radius: 20px 20px 0px 0px;
   padding: 0 2rem;
   border-bottom: 1px solid #495586;
+  position: relative;
 `;
 
 export const SearchField = styled.div`
@@ -67,12 +68,12 @@ export const NoSearchField = styled.div`
 `;
 
 export const NoFilterField = styled.div`
-  width: 9.5%;
+  width: 11.5%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-right: 0.7rem;
+  padding-right: 3%;
 
   p {
     font-family: Lato;
@@ -88,13 +89,18 @@ export const NoFilterField = styled.div`
 
 export const Actions = styled.div`
   dispaly: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  width: 2%;
+  position: absolute;
+  right: 1%;
+  margin: auto 0;
 
   i {
     color: #acacac;
     transition: 0.3s ease all;
+    margin-right: 1rem;
+    cursor: pointer;
+    font-size: 18px;
 
     &:hover {
       color: #50e3c2;

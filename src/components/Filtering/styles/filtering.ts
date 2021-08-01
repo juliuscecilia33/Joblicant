@@ -40,6 +40,12 @@ export const Search = styled.div`
       color: rgba(255, 255, 255, 0.53);
       font-size: 16px;
       margin-left: 0.5rem;
+      transition: 0.3s ease all;
+      cursor: pointer;
+
+      &:hover {
+        color: #50e3c2;
+      }
     }
   }
 
@@ -89,6 +95,12 @@ export const NoSearch = styled.div`
       color: rgba(255, 255, 255, 0.53);
       font-size: 16px;
       margin-left: 0.5rem;
+      transition: 0.3s ease all;
+      cursor: pointer;
+
+      &:hover {
+        color: #50e3c2;
+      }
     }
   }
 `;

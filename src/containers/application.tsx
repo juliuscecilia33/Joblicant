@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Application } from "../components";
 
 export function ApplicationContainer() {
+  const [openDetails, setOpenDetails] = useState(false);
+
   return (
     <Application>
       <Application.SearchIDField id="1">

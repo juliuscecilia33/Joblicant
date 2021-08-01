@@ -72,8 +72,12 @@ Application.Actions = function ApplicationActions({
 }: Props) {
   return (
     <Actions {...restProps}>
-      <i className="fas fa-ellipsis-v"></i>
-      <i className="fas fa-level-down-alt"></i>
+      <button>
+        <i className="fas fa-ellipsis-v"></i>
+      </button>
+      <button>
+        <i className="fas fa-level-down-alt"></i>
+      </button>
     </Actions>
   );
 };
