@@ -7,6 +7,7 @@ import {
   Row,
   SmField,
   Actions,
+  Action,
 } from "./styles/details";
 
 type Props = {
@@ -30,7 +31,7 @@ Details.Actions = function DetailsActions({ children, ...restProps }: Props) {
   return <Actions {...restProps}>{children}</Actions>;
 };
 
-Details.Actions = function DetailsActions({
+Details.Action = function DetailsAction({
   background,
   action,
   icon,
@@ -38,10 +39,10 @@ Details.Actions = function DetailsActions({
   ...restProps
 }: Props) {
   return (
-    <Actions background={background!} {...restProps}>
-      <p>{action}</p>
+    <Action background={background!} {...restProps}>
       <i className={icon}></i>
-    </Actions>
+      <p>{action}</p>
+    </Action>
   );
 };
 

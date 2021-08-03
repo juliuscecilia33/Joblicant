@@ -9,7 +9,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 15vh;
+  height: 25vh;
   background: linear-gradient(
     268.95deg,
     #33384e 4.06%,
@@ -42,6 +42,7 @@ export const Action = styled.button<ActiveProps>`
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 60px;
 
   p {
     font-family: Roboto;
