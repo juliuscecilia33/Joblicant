@@ -8,7 +8,8 @@ export function DashboardContainer() {
     <Dashboard>
       <FilteringContainer />
       <ApplicationContainer />
-      <DetailsContainer />
+      <ApplicationContainer />
+      <ApplicationContainer />
     </Dashboard>
   );
 }

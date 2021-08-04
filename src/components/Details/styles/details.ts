@@ -19,6 +19,7 @@ export const Container = styled.div`
   // padding-right: 11.5%;
   padding-left: 2rem;
   box-shadow: 0px 0px 50px rgba(23, 18, 43, 0.75);
+  transition: 0.5s ease all;
 `;
 
 export const Row = styled.div`
