@@ -8,6 +8,7 @@ import {
   SmField,
   Actions,
   Action,
+  BottomRow,
 } from "./styles/details";
 
 type Props = {
@@ -25,6 +26,13 @@ export default function Details({ children, ...restProps }: Props) {
 
 Details.Row = function DetailsRow({ children, ...restProps }: Props) {
   return <Row {...restProps}>{children}</Row>;
+};
+
+Details.BottomRow = function DetailsBottomRow({
+  children,
+  ...restProps
+}: Props) {
+  return <BottomRow {...restProps}>{children}</BottomRow>;
 };
 
 Details.Actions = function DetailsActions({ children, ...restProps }: Props) {
@@ -81,7 +89,7 @@ Details.SmField = function DetailsSmField({
   return (
     <SmField {...restProps}>
       <p>{name}</p>
-      <i className={icon}></i>
+      {/* <i className={icon}></i> */}
       <input placeholder={name} />
     </SmField>
   );

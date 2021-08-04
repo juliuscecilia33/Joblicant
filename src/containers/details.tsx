@@ -12,9 +12,9 @@ export function DetailsContainer() {
         <Details.SmField name="Interview Date" icon="fas fa-calendar-week" />
         <Details.SmField name="Result" icon="fas fa-chevron-down" />
       </Details.Row>
-      <Details.Row>
+      <Details.BottomRow>
+        <Details.LgField name="Notes" />
         <Details.Actions>
-          <Details.LgField name="Notes" />
           <Details.Action
             action="Delete"
             icon="fas fa-trash"
@@ -26,7 +26,7 @@ export function DetailsContainer() {
             background="linear-gradient(242.46deg, #16B4EB 9.2%, #50E3C2 89.53%)"
           />
         </Details.Actions>
-      </Details.Row>
+      </Details.BottomRow>
     </Details>
   );
 }

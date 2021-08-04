@@ -9,14 +9,14 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 25vh;
+  padding: 2.5rem 0;
   background: linear-gradient(
     268.95deg,
     #33384e 4.06%,
     #1c2031 41.85%,
     #33384e 99.53%
   );
-  padding-right: 11.5%;
+  // padding-right: 11.5%;
   padding-left: 2rem;
   box-shadow: 0px 0px 50px rgba(23, 18, 43, 0.75);
 `;
@@ -24,15 +24,25 @@ export const Container = styled.div`
 export const Row = styled.div`
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   margin-bottom: 2rem;
 `;
 
+export const BottomRow = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 9%;
+`;
+
 export const Actions = styled.div`
   display: flex;
-  justify-content: center;
+  justify-self: flex-end;
   align-items: center;
-  margin-left: 3rem;
+  height: 100%;
 `;
 
 export const Action = styled.button<ActiveProps>`
@@ -43,6 +53,8 @@ export const Action = styled.button<ActiveProps>`
   justify-content: center;
   align-items: center;
   border-radius: 60px;
+  margin-left: 2rem;
+  cursor: pointer;
 
   p {
     font-family: Roboto;
@@ -55,6 +67,7 @@ export const Action = styled.button<ActiveProps>`
   i {
     font-size: 15px;
     color: #ffffff;
+    margin-right: 0.7rem;
   }
 `;
 
@@ -64,6 +77,7 @@ export const MdField = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-right: 3rem;
 
   p {
     font-family: Lato;
@@ -76,7 +90,6 @@ export const MdField = styled.div`
 
   input {
     padding: 10px 12px;
-    width: 213px;
     height: 40px;
     background: rgba(255, 255, 255, 0.15);
     border: 1px solid #50e3c2;
@@ -99,11 +112,13 @@ export const MdField = styled.div`
 `;
 
 export const SmField = styled.div`
-  width: 11.5%;
+  width: 13.5%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
+  padding-right: 3rem;
 
   p {
     font-family: Lato;
@@ -116,7 +131,6 @@ export const SmField = styled.div`
 
   input {
     padding: 10px 12px;
-    width: 139px;
     height: 40px;
     background: rgba(255, 255, 255, 0.15);
     border: 1px solid #50e3c2;
@@ -135,20 +149,28 @@ export const SmField = styled.div`
       &::placeholder {
         color: #ffffff;
       }
+
+      i {
+        color: #ffffff;
+      }
     }
   }
 
   i {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 60%;
+    right: 27%;
     color: rgba(255, 255, 255, 0.5);
     font-size: 12px;
+
+    &:hover {
+      color: #ffffff;
+    }
   }
 `;
 
 export const LgField = styled.div`
-  width: 21.5%;
+  width: 45.5%;
   height: 100%;
   display: flex;
   flex-direction: column;

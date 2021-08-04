@@ -23,6 +23,7 @@ export const Search = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-right: 3rem;
 
   div {
     display: flex;
@@ -51,7 +52,7 @@ export const Search = styled.div`
 
   input {
     padding: 10px 12px;
-    width: 213px;
+    // width: 213px;
     height: 40px;
     background: rgba(255, 255, 255, 0.15);
     border: 1px solid #50e3c2;
