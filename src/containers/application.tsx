@@ -3,28 +3,32 @@ import { Application } from "../components";
 import { DetailsContainer } from "./details";
 
 interface DataProps {
-  index: any;
-  obj: any;
+  index: number;
+  info: any;
 }
 
-export function ApplicationContainer({ index, obj }: DataProps) {
+export function ApplicationContainer({ index, info }: DataProps) {
   const [openDetails, setOpenDetails] = useState<boolean | undefined>(false);
 
   console.log(openDetails);
   console.log(index);
-  console.log(obj);
+  console.log(info);
 
   return (
     <>
       <Application>
-        <Application.SearchIDField id="1">
-          SWE Internship
+        <Application.SearchIDField id={index + 1}>
+          {info.JobTitle}
         </Application.SearchIDField>
-        <Application.SearchField>Google</Application.SearchField>
-        <Application.SearchField>June 22, 2021</Application.SearchField>
-        <Application.NoSearchField>Sent</Application.NoSearchField>
-        <Application.NoSearchField>Sent</Application.NoSearchField>
-        <Application.NoSearchField>Sent</Application.NoSearchField>
+        <Application.SearchField>{info.CompanyName}</Application.SearchField>
+        <Application.SearchField>{info.DateCompleted}</Application.SearchField>
+        <Application.NoSearchField>{info.Status}</Application.NoSearchField>
+        <Application.NoSearchField>
+          {info.InterviewDate === null ? info.Status : info.InterviewDate}
+        </Application.NoSearchField>
+        <Application.NoSearchField>
+          {info.Result === null ? info.Status : info.Result}
+        </Application.NoSearchField>
         <Application.NoFilterField>
           Hello these are my notes
         </Application.NoFilterField>

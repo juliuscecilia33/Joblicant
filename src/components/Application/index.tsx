@@ -15,6 +15,9 @@ type Props = {
   id?: any;
   openDetails?: boolean;
   setOpenDetails?: (open: boolean) => any;
+  sent?: boolean;
+  processing?: boolean;
+  rejected?: boolean;
 };
 
 export default function Application({ children, ...restProps }: Props) {
@@ -47,11 +50,19 @@ Application.SearchField = function ApplicationSearchField({
 };
 
 Application.NoSearchField = function ApplicationNoSearchField({
+  sent,
+  rejected,
+  processing,
   children,
   ...restProps
 }: Props) {
   return (
-    <NoSearchField {...restProps}>
+    <NoSearchField
+      sent={sent}
+      rejected={rejected}
+      processing={processing}
+      {...restProps}
+    >
       <p>{children}</p>
     </NoSearchField>
   );

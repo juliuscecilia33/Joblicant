@@ -13,8 +13,8 @@ export function DashboardContainer({ data }: DataProps) {
   return (
     <Dashboard>
       <FilteringContainer />
-      {data.map((obj: any, index: any) => (
-        <ApplicationContainer index={index} obj={obj} />
+      {data.map((info: any, index: any) => (
+        <ApplicationContainer index={index} info={info} />
       ))}
     </Dashboard>
   );

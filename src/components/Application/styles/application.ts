@@ -18,13 +18,19 @@ export const SearchField = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-right: 3%;
 
   p {
     font-family: Lato;
     font-style: normal;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 17px;
     color: #ffffff;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: left;
   }
 `;
 
@@ -33,13 +39,19 @@ export const SearchIDField = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+  padding-right: 3%;
 
   p {
     font-family: Lato;
     font-style: normal;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 17px;
     color: #ffffff;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: left;
 
     span {
       font-family: Lato;
@@ -57,13 +69,19 @@ export const NoSearchField = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-right: 3%;
 
   p {
     font-family: Lato;
     font-style: normal;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 17px;
     color: #ffffff;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: left;
   }
 `;
 
@@ -84,6 +102,7 @@ export const NoFilterField = styled.div`
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    text-align: left;
   }
 `;
 
