@@ -7,8 +7,6 @@ import {
 import axios from "axios";
 
 function App() {
-  const [data, setData] = useState([]);
-
   // AppId: 1;
   // CompanyName: "Microsoft";
   // DateCompleted: "2021-07-15";
@@ -27,10 +25,11 @@ function App() {
     Status: string;
   }
 
+  const [data, setData] = useState([]);
+
   useEffect(() => {
     axios.get("http://127.0.0.1:8000/application/").then((response) => {
       setData(response.data);
-      console.log(response.data);
     });
   }, []);
 
@@ -38,7 +37,7 @@ function App() {
     <>
       <NavbarContainer />
       <CreateContainer />
-      <DashboardContainer />
+      <DashboardContainer data={data} />
     </>
   );
 }

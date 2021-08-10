@@ -3,13 +3,19 @@ import { Dashboard } from "../components";
 import { FilteringContainer, ApplicationContainer } from "../containers";
 import { DetailsContainer } from "./details";
 
-export function DashboardContainer() {
+interface DataProps {
+  data: any;
+}
+
+export function DashboardContainer({ data }: DataProps) {
+  console.log(data);
+
   return (
     <Dashboard>
       <FilteringContainer />
-      <ApplicationContainer />
-      <ApplicationContainer />
-      <ApplicationContainer />
+      {data.map((obj: any, index: any) => (
+        <ApplicationContainer index={index} obj={obj} />
+      ))}
     </Dashboard>
   );
 }

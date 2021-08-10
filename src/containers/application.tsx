@@ -2,10 +2,17 @@ import React, { useState } from "react";
 import { Application } from "../components";
 import { DetailsContainer } from "./details";
 
-export function ApplicationContainer() {
+interface DataProps {
+  index: any;
+  obj: any;
+}
+
+export function ApplicationContainer({ index, obj }: DataProps) {
   const [openDetails, setOpenDetails] = useState<boolean | undefined>(false);
 
   console.log(openDetails);
+  console.log(index);
+  console.log(obj);
 
   return (
     <>
