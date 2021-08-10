@@ -1,5 +1,12 @@
 import styled from "styled-components/macro";
 
+interface StatusProps {
+  sent?: boolean;
+  processing?: boolean;
+  rejected?: boolean;
+  accepted?: boolean;
+}
+
 export const Container = styled.div`
   width: 100%;
   display: flex;
@@ -63,7 +70,7 @@ export const SearchIDField = styled.div`
   }
 `;
 
-export const NoSearchField = styled.div`
+export const NoSearchField = styled.div<StatusProps>`
   width: 11.5%;
   height: 100%;
   display: flex;
@@ -76,7 +83,16 @@ export const NoSearchField = styled.div`
     font-style: normal;
     font-weight: 600;
     font-size: 17px;
-    color: #ffffff;
+    color: ${({ sent, rejected, processing, accepted }) =>
+      sent
+        ? "#FFCC70"
+        : rejected
+        ? "#FF708A"
+        : processing
+        ? "#16B4EB"
+        : accepted
+        ? "#00FFC6"
+        : "#ffffff"};
     text-align: left;
     text-overflow: ellipsis;
     overflow: hidden;

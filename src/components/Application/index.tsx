@@ -18,6 +18,7 @@ type Props = {
   sent?: boolean;
   processing?: boolean;
   rejected?: boolean;
+  accepted?: boolean;
 };
 
 export default function Application({ children, ...restProps }: Props) {
@@ -53,6 +54,7 @@ Application.NoSearchField = function ApplicationNoSearchField({
   sent,
   rejected,
   processing,
+  accepted,
   children,
   ...restProps
 }: Props) {
@@ -61,6 +63,7 @@ Application.NoSearchField = function ApplicationNoSearchField({
       sent={sent}
       rejected={rejected}
       processing={processing}
+      accepted={accepted}
       {...restProps}
     >
       <p>{children}</p>
