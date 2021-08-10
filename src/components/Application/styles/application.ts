@@ -102,7 +102,7 @@ export const NoSearchField = styled.div<StatusProps>`
 `;
 
 export const NoFilterField = styled.div`
-  width: 11.5%;
+  width: 15.5%;
   height: 100%;
   display: flex;
   flex-direction: column;

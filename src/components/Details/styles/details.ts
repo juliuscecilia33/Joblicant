@@ -171,7 +171,7 @@ export const SmField = styled.div`
 `;
 
 export const LgField = styled.div`
-  width: 45.5%;
+  width: 56.2%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -188,7 +188,7 @@ export const LgField = styled.div`
 
   input {
     padding: 10px 12px;
-    width: 139px;
+    width: 100%;
     height: 40px;
     background: rgba(255, 255, 255, 0.15);
     border: 1px solid #50e3c2;

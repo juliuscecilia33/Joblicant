@@ -3,7 +3,6 @@ import React from "react";
 import { Container } from "./styles/dashboard";
 
 type Props = {
-  onClick?: any;
   children?: React.ReactNode;
 };
 

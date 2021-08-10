@@ -4,3 +4,4 @@ export { FilteringContainer } from "./filtering";
 export { DashboardContainer } from "./dashboard";
 export { DetailsContainer } from "./details";
 export { ApplicationContainer } from "./application";
+export { EmptyContainer } from "./empty";
