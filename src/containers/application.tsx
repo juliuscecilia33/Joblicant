@@ -11,8 +11,7 @@ export function ApplicationContainer({ index, info }: DataProps) {
   const [openDetails, setOpenDetails] = useState<boolean | undefined>(false);
 
   console.log(openDetails);
-  console.log(index);
-  console.log(info);
+  // console.log(info);
 
   return (
     <>
@@ -66,7 +65,7 @@ export function ApplicationContainer({ index, info }: DataProps) {
           setOpenDetails={setOpenDetails}
         />
       </Application>
-      {openDetails && <DetailsContainer />}
+      {openDetails && <DetailsContainer info={info} />}
     </>
   );
 }

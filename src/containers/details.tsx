@@ -1,7 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { Details } from "../components";
+import axios from "axios";
 
-export function DetailsContainer() {
+interface DataProps {
+  info: any;
+}
+
+export function DetailsContainer({ info }: DataProps) {
+  const [deleted, setDeleted] = useState<boolean | undefined>(false);
+  const [errorMessage, setErrorMessage] = useState<string | undefined>("");
+
+  console.log("Details: ");
+  console.log(info);
+
+  const DeleteApplication = () => {
+    axios
+      .delete("http://127.0.0.1:8000/application/" + info.AppId)
+      .then((response) => {
+        console.log(response);
+        setDeleted(true);
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+        console.error("There was an error!", error);
+      });
+  };
+
   return (
     <Details>
       <Details.Row>
@@ -19,6 +43,7 @@ export function DetailsContainer() {
             action="Delete"
             icon="fas fa-trash"
             background="linear-gradient(136.67deg, #FF404B 8.34%, #EF389B 95.26%)"
+            onClick={() => DeleteApplication()}
           />
           <Details.Action
             action="Save"

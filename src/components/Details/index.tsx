@@ -40,6 +40,7 @@ Details.Actions = function DetailsActions({ children, ...restProps }: Props) {
 };
 
 Details.Action = function DetailsAction({
+  onClick,
   background,
   action,
   icon,
@@ -47,7 +48,7 @@ Details.Action = function DetailsAction({
   ...restProps
 }: Props) {
   return (
-    <Action background={background!} {...restProps}>
+    <Action onClick={onClick} background={background!} {...restProps}>
       <i className={icon}></i>
       <p>{action}</p>
     </Action>
