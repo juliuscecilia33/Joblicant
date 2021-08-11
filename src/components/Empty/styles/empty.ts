@@ -13,7 +13,7 @@ export const Container = styled.div`
     font-weight: 600;
     font-size: 18px;
     color: #ffffff;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     text-align: center;
   }
 `;

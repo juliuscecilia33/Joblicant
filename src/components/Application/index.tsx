@@ -6,6 +6,7 @@ import {
   SearchIDField,
   NoSearchField,
   NoFilterField,
+  NoSearchResult,
   Actions,
 } from "./styles/application";
 
@@ -68,6 +69,19 @@ Application.NoSearchField = function ApplicationNoSearchField({
     >
       <p>{children}</p>
     </NoSearchField>
+  );
+};
+
+Application.NoSearchResult = function ApplicationNoSearchResult({
+  rejected,
+  accepted,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <NoSearchResult rejected={rejected} accepted={accepted} {...restProps}>
+      <p>{children}</p>
+    </NoSearchResult>
   );
 };
 

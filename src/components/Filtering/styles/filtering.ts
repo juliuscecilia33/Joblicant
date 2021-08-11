@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 export const Container = styled.div`
   width: 100%;
   display: flex;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
   height: 10vh;
   background: linear-gradient(
@@ -18,7 +18,7 @@ export const Container = styled.div`
 `;
 
 export const Search = styled.div`
-  width: 18%;
+  width: 17%;
   height: 100%;
   display: flex;
   flex-direction: column;

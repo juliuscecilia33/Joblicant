@@ -101,6 +101,29 @@ export const NoSearchField = styled.div<StatusProps>`
   }
 `;
 
+export const NoSearchResult = styled.div<StatusProps>`
+  width: 11.5%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 3%;
+
+  p {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    color: ${({ rejected, accepted }) =>
+      rejected ? "#FF708A" : accepted ? "#00FFC6" : "#ffffff"};
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: left;
+  }
+`;
+
 export const NoFilterField = styled.div`
   width: 15.5%;
   height: 100%;
