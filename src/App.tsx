@@ -4,6 +4,7 @@ import {
   CreateContainer,
   DashboardContainer,
 } from "./containers";
+import { DataContext } from "./context/data";
 import axios from "axios";
 
 function App() {
@@ -15,15 +16,11 @@ function App() {
   // Result: null;
   // Status: "Sent";
 
-  interface Application {
-    AppId: number;
-    CompanyName: string;
-    DateCompleted: number;
-    InterviewDate?: number;
-    JobTitle: string;
-    Result?: string;
-    Status: string;
-  }
+  type MyContextType = {
+    value?: any;
+    data?: any;
+    setData?: any;
+  };
 
   const [data, setData] = useState([]);
 
@@ -35,9 +32,11 @@ function App() {
 
   return (
     <>
-      <NavbarContainer />
-      <CreateContainer />
-      <DashboardContainer data={data} />
+      <DataContext.Provider value={{ data, setData }}>
+        <NavbarContainer />
+        <CreateContainer />
+        <DashboardContainer data={data} />
+      </DataContext.Provider>
     </>
   );
 }

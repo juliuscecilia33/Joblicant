@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Details } from "../components";
 import axios from "axios";
+import { DataContext } from "../context/data";
 
 interface DataProps {
   info: any;
@@ -10,15 +11,16 @@ export function DetailsContainer({ info }: DataProps) {
   const [deleted, setDeleted] = useState<boolean | undefined>(false);
   const [errorMessage, setErrorMessage] = useState<string | undefined>("");
 
-  console.log("Details: ");
-  console.log(info);
+  useEffect(() => {}, []);
 
-  const DeleteApplication = () => {
+  const DeleteApplication = (information: any) => {
+    // console.log(information);
     axios
-      .delete("http://127.0.0.1:8000/application/" + info.AppId)
+      .delete("http://127.0.0.1:8000/application/" + information.AppId)
       .then((response) => {
         console.log(response);
         setDeleted(true);
+        window.location.reload();
       })
       .catch((error) => {
         setErrorMessage(error.message);
@@ -43,7 +45,7 @@ export function DetailsContainer({ info }: DataProps) {
             action="Delete"
             icon="fas fa-trash"
             background="linear-gradient(136.67deg, #FF404B 8.34%, #EF389B 95.26%)"
-            onClick={() => DeleteApplication()}
+            onClick={() => DeleteApplication(info)}
           />
           <Details.Action
             action="Save"
