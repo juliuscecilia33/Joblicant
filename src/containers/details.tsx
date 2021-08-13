@@ -10,6 +10,15 @@ interface DataProps {
 export function DetailsContainer({ info }: DataProps) {
   const [deleted, setDeleted] = useState<boolean | undefined>(false);
   const [errorMessage, setErrorMessage] = useState<string | undefined>("");
+  const [jobTitle, setJobTitle] = useState<string | undefined>("");
+  const [companyName, setCompanyName] = useState<string | undefined>("");
+  const [dateCompleted, setDateCompleted] = useState<string | undefined>("");
+  const [notes, setNotes] = useState<string | undefined>("");
+
+  console.log("company name " + companyName);
+  console.log("date completed " + dateCompleted);
+  console.log("job title" + jobTitle);
+  console.log("notes" + notes);
 
   useEffect(() => {}, []);
 
@@ -31,15 +40,27 @@ export function DetailsContainer({ info }: DataProps) {
   return (
     <Details>
       <Details.Row>
-        <Details.MdField name="Job Title" />
-        <Details.MdField name="Company Name" />
-        <Details.MdField name="Date Completed" />
-        <Details.SmField name="Status" icon="" />
+        <Details.MdField
+          setValue={setJobTitle}
+          value={jobTitle}
+          name="Job Title"
+        />
+        <Details.MdField
+          setValue={setCompanyName}
+          value={companyName}
+          name="Company Name"
+        />
+        <Details.MdField
+          setValue={setDateCompleted}
+          value={dateCompleted}
+          name="Date Completed"
+        />
+        <Details.SmField name="Status" icon="fas fa-chevron-down" />
         <Details.SmField name="Interview Date" icon="fas fa-calendar-week" />
         <Details.SmField name="Result" icon="fas fa-chevron-down" />
       </Details.Row>
       <Details.BottomRow>
-        <Details.LgField name="Notes" />
+        <Details.LgField setValue={setNotes} value={notes} name="Notes" />
         <Details.Actions>
           <Details.Action
             action="Delete"

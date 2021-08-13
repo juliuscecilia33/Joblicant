@@ -18,6 +18,8 @@ type Props = {
   icon?: string;
   background?: string;
   action?: string;
+  setValue?: any;
+  value?: any;
 };
 
 export default function Details({ children, ...restProps }: Props) {
@@ -56,6 +58,8 @@ Details.Action = function DetailsAction({
 };
 
 Details.LgField = function DetailsLgField({
+  setValue,
+  value,
   name,
   children,
   ...restProps
@@ -63,12 +67,18 @@ Details.LgField = function DetailsLgField({
   return (
     <LgField {...restProps}>
       <p>{name}</p>
-      <input placeholder={name} />
+      <input
+        onChange={(event: any) => setValue(event.target.value)}
+        value={value}
+        placeholder={name}
+      />
     </LgField>
   );
 };
 
 Details.MdField = function DetailsMdField({
+  setValue,
+  value,
   name,
   children,
   ...restProps
@@ -76,7 +86,11 @@ Details.MdField = function DetailsMdField({
   return (
     <MdField {...restProps}>
       <p>{name}</p>
-      <input placeholder={name} />
+      <input
+        onChange={(event) => setValue(event.target.value)}
+        value={value}
+        placeholder={name}
+      />
     </MdField>
   );
 };
@@ -90,7 +104,7 @@ Details.SmField = function DetailsSmField({
   return (
     <SmField {...restProps}>
       <p>{name}</p>
-      {/* <i className={icon}></i> */}
+      <i className={icon}></i>
       <input placeholder={name} />
     </SmField>
   );

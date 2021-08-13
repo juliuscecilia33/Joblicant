@@ -143,6 +143,7 @@ export const SmField = styled.div`
     font-weight: 500;
     transition: 0.3s ease all;
     position: relative;
+    cursor: pointer;
 
     &:focus,
     &:hover {

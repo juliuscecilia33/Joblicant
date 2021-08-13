@@ -16,12 +16,6 @@ function App() {
   // Result: null;
   // Status: "Sent";
 
-  type MyContextType = {
-    value?: any;
-    data?: any;
-    setData?: any;
-  };
-
   const [data, setData] = useState([]);
 
   useEffect(() => {
