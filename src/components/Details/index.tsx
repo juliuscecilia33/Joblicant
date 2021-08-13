@@ -9,6 +9,7 @@ import {
   Actions,
   Action,
   BottomRow,
+  SmMdField,
 } from "./styles/details";
 
 type Props = {
@@ -107,5 +108,20 @@ Details.SmField = function DetailsSmField({
       <i className={icon}></i>
       <input placeholder={name} />
     </SmField>
+  );
+};
+
+Details.SmMdField = function DetailsSmMdField({
+  icon,
+  name,
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <SmMdField {...restProps}>
+      <p>{name}</p>
+      <i className={icon}></i>
+      <input placeholder={name} />
+    </SmMdField>
   );
 };

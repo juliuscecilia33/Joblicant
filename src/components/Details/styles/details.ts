@@ -171,6 +171,65 @@ export const SmField = styled.div`
   }
 `;
 
+export const SmMdField = styled.div`
+  width: 18%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  padding-right: 3rem;
+
+  p {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    color: #50e3c2;
+    margin-bottom: 0.5rem;
+  }
+
+  input {
+    padding: 10px 12px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid #50e3c2;
+    border-radius: 10px;
+    outline: none;
+    color: #ffffff;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    transition: 0.3s ease all;
+    position: relative;
+    cursor: pointer;
+
+    &:focus,
+    &:hover {
+      background: rgba(255, 255, 255, 0.35);
+      &::placeholder {
+        color: #ffffff;
+      }
+
+      i {
+        color: #ffffff;
+      }
+    }
+  }
+
+  i {
+    position: absolute;
+    top: 60%;
+    right: 27%;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+
+    &:hover {
+      color: #ffffff;
+    }
+  }
+`;
+
 export const LgField = styled.div`
   width: 56.2%;
   height: 100%;
