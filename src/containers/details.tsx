@@ -56,19 +56,34 @@ export function DetailsContainer({ info }: DataProps) {
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <DatePicker value={selectedDate} onChange={handleDateChange} />
           </MuiPickersUtilsProvider>
-          <Details.SmField name="Status" icon="fas fa-chevron-down" />
+          <Details.SmField
+            value={selectedDate}
+            onChange={handleDateChange}
+            name="Status"
+            icon="fas fa-chevron-down"
+          />
         </Details.FieldContainer>
         <Details.FieldContainer>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <DatePicker value={selectedDate} onChange={handleDateChange} />
           </MuiPickersUtilsProvider>
-          <Details.SmField name="Interview Date" icon="fas fa-calendar-week" />
+          <Details.SmField
+            value={selectedDate}
+            onChange={handleDateChange}
+            name="Interview Date"
+            icon="fas fa-calendar-week"
+          />
         </Details.FieldContainer>
         <Details.FieldContainer>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <DatePicker value={selectedDate} onChange={handleDateChange} />
           </MuiPickersUtilsProvider>
-          <Details.SmField name="Result" icon="fas fa-chevron-down" />
+          <Details.SmField
+            value={selectedDate}
+            onChange={handleDateChange}
+            name="Result"
+            icon="fas fa-chevron-down"
+          />
         </Details.FieldContainer>
       </Details.Row>
       <Details.BottomRow>

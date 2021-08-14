@@ -22,6 +22,7 @@ type Props = {
   action?: string;
   setValue?: any;
   value?: any;
+  onChange?: any;
 };
 
 export default function Details({ children, ...restProps }: Props) {
@@ -105,6 +106,8 @@ Details.MdField = function DetailsMdField({
 };
 
 Details.SmField = function DetailsSmField({
+  value,
+  onChange,
   icon,
   name,
   children,
@@ -114,7 +117,12 @@ Details.SmField = function DetailsSmField({
     <SmField {...restProps}>
       <p>{name}</p>
       <i className={icon}></i>
-      <input disabled={true} placeholder={name} />
+      <input
+        value={value}
+        onChange={onChange}
+        disabled={true}
+        placeholder={name}
+      />
     </SmField>
   );
 };
