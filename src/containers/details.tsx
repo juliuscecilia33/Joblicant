@@ -38,6 +38,14 @@ export function DetailsContainer({ info }: DataProps) {
       });
   };
 
+  const FormatDate = (d: any) => {
+    let date = d.getDate();
+    let month = d.getMonth();
+    let year = d.getFullYear();
+    let dateStr = month + "/" + date + "/" + year;
+    return dateStr;
+  };
+
   return (
     <Details>
       <Details.Row>
@@ -57,7 +65,7 @@ export function DetailsContainer({ info }: DataProps) {
             <DatePicker value={selectedDate} onChange={handleDateChange} />
           </MuiPickersUtilsProvider>
           <Details.SmField
-            value={selectedDate}
+            value={FormatDate(selectedDate)}
             onChange={handleDateChange}
             name="Status"
             icon="fas fa-chevron-down"
@@ -68,7 +76,7 @@ export function DetailsContainer({ info }: DataProps) {
             <DatePicker value={selectedDate} onChange={handleDateChange} />
           </MuiPickersUtilsProvider>
           <Details.SmField
-            value={selectedDate}
+            value={FormatDate(selectedDate)}
             onChange={handleDateChange}
             name="Interview Date"
             icon="fas fa-calendar-week"
@@ -79,7 +87,7 @@ export function DetailsContainer({ info }: DataProps) {
             <DatePicker value={selectedDate} onChange={handleDateChange} />
           </MuiPickersUtilsProvider>
           <Details.SmField
-            value={selectedDate}
+            value={FormatDate(selectedDate)}
             onChange={handleDateChange}
             name="Result"
             icon="fas fa-chevron-down"
