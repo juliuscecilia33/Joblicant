@@ -2,7 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import { Details } from "../components";
 import axios from "axios";
 import { DataContext } from "../context/data";
-import { DatePicker } from "@material-ui/pickers";
+import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns"; // choose your lib
 
 interface DataProps {
   info: any;
@@ -14,6 +15,7 @@ export function DetailsContainer({ info }: DataProps) {
   const [jobTitle, setJobTitle] = useState<string | undefined>("");
   const [companyName, setCompanyName] = useState<string | undefined>("");
   const [notes, setNotes] = useState<string | undefined>("");
+  const [selectedDate, handleDateChange] = useState(new Date());
 
   console.log("company name " + companyName);
   console.log("job title" + jobTitle);
@@ -50,9 +52,24 @@ export function DetailsContainer({ info }: DataProps) {
           name="Company Name"
         />
         <Details.SmMdField icon="fas fa-calendar-week" name="Date Completed" />
-        <Details.SmField name="Status" icon="fas fa-chevron-down" />
-        <Details.SmField name="Interview Date" icon="fas fa-calendar-week" />
-        <Details.SmField name="Result" icon="fas fa-chevron-down" />
+        <Details.FieldContainer>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <DatePicker value={selectedDate} onChange={handleDateChange} />
+          </MuiPickersUtilsProvider>
+          <Details.SmField name="Status" icon="fas fa-chevron-down" />
+        </Details.FieldContainer>
+        <Details.FieldContainer>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <DatePicker value={selectedDate} onChange={handleDateChange} />
+          </MuiPickersUtilsProvider>
+          <Details.SmField name="Interview Date" icon="fas fa-calendar-week" />
+        </Details.FieldContainer>
+        <Details.FieldContainer>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <DatePicker value={selectedDate} onChange={handleDateChange} />
+          </MuiPickersUtilsProvider>
+          <Details.SmField name="Result" icon="fas fa-chevron-down" />
+        </Details.FieldContainer>
       </Details.Row>
       <Details.BottomRow>
         <Details.LgField setValue={setNotes} value={notes} name="Notes" />

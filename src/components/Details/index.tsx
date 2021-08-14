@@ -10,6 +10,7 @@ import {
   Action,
   BottomRow,
   SmMdField,
+  FieldContainer,
 } from "./styles/details";
 
 type Props = {
@@ -40,6 +41,13 @@ Details.BottomRow = function DetailsBottomRow({
 
 Details.Actions = function DetailsActions({ children, ...restProps }: Props) {
   return <Actions {...restProps}>{children}</Actions>;
+};
+
+Details.FieldContainer = function DetailsFieldContainer({
+  children,
+  ...restProps
+}: Props) {
+  return <FieldContainer {...restProps}>{children}</FieldContainer>;
 };
 
 Details.Action = function DetailsAction({
@@ -106,7 +114,7 @@ Details.SmField = function DetailsSmField({
     <SmField {...restProps}>
       <p>{name}</p>
       <i className={icon}></i>
-      <input placeholder={name} />
+      <input disabled={true} placeholder={name} />
     </SmField>
   );
 };
