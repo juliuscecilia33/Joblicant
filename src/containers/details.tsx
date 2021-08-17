@@ -65,7 +65,17 @@ export function DetailsContainer({
           value={companyName}
           name="Company Name"
         />
-        <Details.SmMdField icon="fas fa-calendar-week" name="Date Completed" />
+        <Details.MdFieldContainer>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <DatePicker value={selectedDate} onChange={handleDateChange} />
+          </MuiPickersUtilsProvider>
+          <Details.SmMdField
+            value={FormatDate(selectedDate)}
+            onChange={handleDateChange}
+            icon="fas fa-calendar-week"
+            name="Date Completed"
+          />
+        </Details.MdFieldContainer>
         <Details.FieldContainer>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <DatePicker value={selectedDate} onChange={handleDateChange} />

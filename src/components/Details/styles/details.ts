@@ -151,6 +151,28 @@ export const FieldContainer = styled.div`
   }
 `;
 
+export const MdFieldContainer = styled.div`
+  width: 18%;
+  position: relative;
+  padding-right: 3rem;
+
+  .MuiFormControl-root {
+    z-index: 5;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-10%);
+    left: 0;
+    opacity: 0;
+    width: 80%;
+    height: 75%;
+    cursor: pointer;
+  }
+
+  .MuiInputBase-input {
+    cursor: pointer;
+  }
+`;
+
 export const SmField = styled.div`
   width: 100%;
   height: 100%;
@@ -210,13 +232,13 @@ export const SmField = styled.div`
 `;
 
 export const SmMdField = styled.div`
-  width: 18%;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
-  padding-right: 3rem;
+  // padding-right: 3rem;
 
   p {
     font-family: Lato;
@@ -258,7 +280,7 @@ export const SmMdField = styled.div`
   i {
     position: absolute;
     top: 60%;
-    right: 21%;
+    right: 9%;
     color: rgba(255, 255, 255, 0.5);
     font-size: 12px;
 

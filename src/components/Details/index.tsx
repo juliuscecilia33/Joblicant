@@ -12,6 +12,7 @@ import {
   SmMdField,
   Cancel,
   FieldContainer,
+  MdFieldContainer,
 } from "./styles/details";
 
 type Props = {
@@ -52,6 +53,13 @@ Details.FieldContainer = function DetailsFieldContainer({
   return <FieldContainer {...restProps}>{children}</FieldContainer>;
 };
 
+Details.MdFieldContainer = function DetailsMdFieldContainer({
+  children,
+  ...restProps
+}: Props) {
+  return <MdFieldContainer {...restProps}>{children}</MdFieldContainer>;
+};
+
 Details.Action = function DetailsAction({
   onClick,
   background,
@@ -68,13 +76,17 @@ Details.Action = function DetailsAction({
   );
 };
 
-Details.Cancel = function DetailsCancel({ onClick, children, ...restProps }: Props) {
+Details.Cancel = function DetailsCancel({
+  onClick,
+  children,
+  ...restProps
+}: Props) {
   return (
     <Cancel onClick={onClick} {...restProps}>
       Cancel
     </Cancel>
-  )
-}
+  );
+};
 
 Details.LgField = function DetailsLgField({
   setValue,
@@ -137,6 +149,8 @@ Details.SmField = function DetailsSmField({
 };
 
 Details.SmMdField = function DetailsSmMdField({
+  value,
+  onChange,
   icon,
   name,
   children,
@@ -146,7 +160,12 @@ Details.SmMdField = function DetailsSmMdField({
     <SmMdField {...restProps}>
       <p>{name}</p>
       <i className={icon}></i>
-      <input placeholder={name} />
+      <input
+        value={value}
+        onChange={onChange}
+        disabled={true}
+        placeholder={name}
+      />
     </SmMdField>
   );
 };
