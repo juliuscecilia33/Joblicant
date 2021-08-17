@@ -25,22 +25,27 @@ export function DetailsContainer({
   const [companyName, setCompanyName] = useState<string | undefined>("");
   const [notes, setNotes] = useState<string | undefined>("");
   const [status, setStatus] = useState(info.Status);
+  const [result, setResult] = useState(info.Result);
   const [selectedDate, handleDateChange] = useState(
     new Date(info.DateCompleted)
+  );
+  const [interviewDate, handleInterviewDateChange] = useState(
+    new Date(info.InterviewDate)
   );
 
   console.log(info);
 
-  const handleChange = (event: any) => {
+  const handleStatusChange = (event: any) => {
     setStatus(event.target.value);
+  };
+
+  const handleResultChange = (event: any) => {
+    setResult(event.target.value);
   };
 
   console.log(openDetails);
 
-  useEffect(() => {}, []);
-
   const DeleteApplication = (information: any) => {
-    // console.log(information);
     axios
       .delete("http://127.0.0.1:8000/application/" + information.AppId)
       .then((response) => {
@@ -93,7 +98,7 @@ export function DetailsContainer({
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={status}
-              onChange={handleChange}
+              onChange={handleStatusChange}
             >
               <MenuItem value={"Sent"}>Sent</MenuItem>
               <MenuItem value={"Online Assessment"}>Online Assessment</MenuItem>
@@ -104,33 +109,45 @@ export function DetailsContainer({
           </FormControl>
           <Details.SmField
             value={status}
-            onChange={handleChange}
+            onChange={handleStatusChange}
             name="Status"
             icon="fas fa-chevron-down"
           />
         </Details.DropdownFieldContainer>
         <Details.FieldContainer>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <DatePicker value={selectedDate} onChange={handleDateChange} />
+            <DatePicker
+              value={interviewDate}
+              onChange={handleInterviewDateChange}
+            />
           </MuiPickersUtilsProvider>
           <Details.SmField
-            value={FormatDate(selectedDate)}
+            value={FormatDate(interviewDate)}
             onChange={handleDateChange}
             name="Interview Date"
             icon="fas fa-calendar-week"
           />
         </Details.FieldContainer>
-        <Details.FieldContainer>
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <DatePicker value={selectedDate} onChange={handleDateChange} />
-          </MuiPickersUtilsProvider>
+        <Details.DropdownFieldContainer>
+          <FormControl>
+            <InputLabel id="demo-simple-select-label">Age</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={result}
+              onChange={handleResultChange}
+            >
+              <MenuItem value={"Accepted"}>Accepted</MenuItem>
+              <MenuItem value={"Rejected"}>Rejected</MenuItem>
+            </Select>
+          </FormControl>
           <Details.SmField
-            value={FormatDate(selectedDate)}
-            onChange={handleDateChange}
+            value={result}
+            onChange={handleResultChange}
             name="Result"
             icon="fas fa-chevron-down"
           />
-        </Details.FieldContainer>
+        </Details.DropdownFieldContainer>
       </Details.Row>
       <Details.BottomRow>
         <Details.LgField setValue={setNotes} value={notes} name="Notes" />
