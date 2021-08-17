@@ -10,9 +10,6 @@ interface DataProps {
 export function ApplicationContainer({ index, info }: DataProps) {
   const [openDetails, setOpenDetails] = useState<boolean | undefined>(false);
 
-  console.log(openDetails);
-  // console.log(info);
-
   // 2021-07-11
   const FormatDate = (d: any) => {
     let year = d.substring(0, 4);
@@ -79,7 +76,13 @@ export function ApplicationContainer({ index, info }: DataProps) {
           setOpenDetails={setOpenDetails}
         />
       </Application>
-      {openDetails && <DetailsContainer info={info} />}
+      {openDetails && (
+        <DetailsContainer
+          setOpenDetails={setOpenDetails}
+          openDetails={openDetails}
+          info={info}
+        />
+      )}
     </>
   );
 }

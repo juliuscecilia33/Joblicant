@@ -7,19 +7,25 @@ import DateFnsUtils from "@date-io/date-fns"; // choose your lib=
 
 interface DataProps {
   info: any;
+  openDetails: boolean;
+  setOpenDetails: any;
 }
 
-export function DetailsContainer({ info }: DataProps) {
+export function DetailsContainer({
+  setOpenDetails,
+  info,
+  openDetails,
+}: DataProps) {
   const [deleted, setDeleted] = useState<boolean | undefined>(false);
   const [errorMessage, setErrorMessage] = useState<string | undefined>("");
   const [jobTitle, setJobTitle] = useState<string | undefined>("");
   const [companyName, setCompanyName] = useState<string | undefined>("");
   const [notes, setNotes] = useState<string | undefined>("");
-  const [selectedDate, handleDateChange] = useState(new Date());
+  const [selectedDate, handleDateChange] = useState(
+    new Date(info.InterviewDate)
+  );
 
-  console.log("company name " + companyName);
-  console.log("job title" + jobTitle);
-  console.log("notes" + notes);
+  console.log(openDetails);
 
   useEffect(() => {}, []);
 
@@ -40,7 +46,7 @@ export function DetailsContainer({ info }: DataProps) {
 
   const FormatDate = (d: any) => {
     let date = d.getDate();
-    let month = d.getMonth();
+    let month = d.getMonth() + 1;
     let year = d.getFullYear();
     let dateStr = month + "/" + date + "/" + year;
     return dateStr;
@@ -97,6 +103,7 @@ export function DetailsContainer({ info }: DataProps) {
       <Details.BottomRow>
         <Details.LgField setValue={setNotes} value={notes} name="Notes" />
         <Details.Actions>
+          <Details.Cancel onClick={() => setOpenDetails(false)} />
           <Details.Action
             action="Delete"
             icon="fas fa-trash"

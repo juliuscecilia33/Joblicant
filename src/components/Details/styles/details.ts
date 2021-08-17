@@ -72,6 +72,23 @@ export const Action = styled.button<ActiveProps>`
   }
 `;
 
+export const Cancel = styled.button`
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.53);
+  transition: 0.5s ease all;
+  font-family: Roboto;
+  font-style: normal;
+
+  &:hover {
+    color: #ffffff;
+  }
+`;
+
 export const MdField = styled.div`
   width: 18%;
   height: 100%;

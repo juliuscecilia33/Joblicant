@@ -10,6 +10,7 @@ import {
   Action,
   BottomRow,
   SmMdField,
+  Cancel,
   FieldContainer,
 } from "./styles/details";
 
@@ -66,6 +67,14 @@ Details.Action = function DetailsAction({
     </Action>
   );
 };
+
+Details.Cancel = function DetailsCancel({ onClick, children, ...restProps }: Props) {
+  return (
+    <Cancel onClick={onClick} {...restProps}>
+      Cancel
+    </Cancel>
+  )
+}
 
 Details.LgField = function DetailsLgField({
   setValue,
