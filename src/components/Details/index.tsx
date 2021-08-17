@@ -13,6 +13,7 @@ import {
   Cancel,
   FieldContainer,
   MdFieldContainer,
+  DropdownFieldContainer,
 } from "./styles/details";
 
 type Props = {
@@ -51,6 +52,15 @@ Details.FieldContainer = function DetailsFieldContainer({
   ...restProps
 }: Props) {
   return <FieldContainer {...restProps}>{children}</FieldContainer>;
+};
+
+Details.DropdownFieldContainer = function DetailsDropdownFieldContainer({
+  children,
+  ...restProps
+}: Props) {
+  return (
+    <DropdownFieldContainer {...restProps}>{children}</DropdownFieldContainer>
+  );
 };
 
 Details.MdFieldContainer = function DetailsMdFieldContainer({

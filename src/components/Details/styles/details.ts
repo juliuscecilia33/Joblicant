@@ -151,6 +151,32 @@ export const FieldContainer = styled.div`
   }
 `;
 
+export const DropdownFieldContainer = styled.div`
+  width: 13.5%;
+  position: relative;
+  padding-right: 3rem;
+
+  .MuiFormControl-root {
+    z-index: 5;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-25%);
+    left: 0;
+    opacity: 0;
+    width: 80%;
+    height: 75%;
+    cursor: pointer;
+  }
+
+  MuiPaper-rounded {
+    top: 480px !important;
+  }
+
+  .MuiInputBase-input {
+    cursor: pointer;
+  }
+`;
+
 export const MdFieldContainer = styled.div`
   width: 18%;
   position: relative;

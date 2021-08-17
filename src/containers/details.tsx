@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Details } from "../components";
 import axios from "axios";
-import { DataContext } from "../context/data";
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns"; // choose your lib=
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 
 interface DataProps {
   info: any;
@@ -21,9 +24,16 @@ export function DetailsContainer({
   const [jobTitle, setJobTitle] = useState<string | undefined>("");
   const [companyName, setCompanyName] = useState<string | undefined>("");
   const [notes, setNotes] = useState<string | undefined>("");
+  const [status, setStatus] = useState(info.Status);
   const [selectedDate, handleDateChange] = useState(
-    new Date(info.InterviewDate)
+    new Date(info.DateCompleted)
   );
+
+  console.log(info);
+
+  const handleChange = (event: any) => {
+    setStatus(event.target.value);
+  };
 
   console.log(openDetails);
 
@@ -76,17 +86,29 @@ export function DetailsContainer({
             name="Date Completed"
           />
         </Details.MdFieldContainer>
-        <Details.FieldContainer>
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <DatePicker value={selectedDate} onChange={handleDateChange} />
-          </MuiPickersUtilsProvider>
+        <Details.DropdownFieldContainer>
+          <FormControl>
+            <InputLabel id="demo-simple-select-label">Age</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={status}
+              onChange={handleChange}
+            >
+              <MenuItem value={"Sent"}>Sent</MenuItem>
+              <MenuItem value={"Online Assessment"}>Online Assessment</MenuItem>
+              <MenuItem value={"Interview[1]"}>Interview[1]</MenuItem>
+              <MenuItem value={"Interview[2]"}>Interview[2]</MenuItem>
+              <MenuItem value={"Interview[3]"}>Interview[3]</MenuItem>
+            </Select>
+          </FormControl>
           <Details.SmField
-            value={FormatDate(selectedDate)}
-            onChange={handleDateChange}
+            value={status}
+            onChange={handleChange}
             name="Status"
             icon="fas fa-chevron-down"
           />
-        </Details.FieldContainer>
+        </Details.DropdownFieldContainer>
         <Details.FieldContainer>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <DatePicker value={selectedDate} onChange={handleDateChange} />
