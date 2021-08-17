@@ -3,7 +3,7 @@ import { Details } from "../components";
 import axios from "axios";
 import { DataContext } from "../context/data";
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
-import DateFnsUtils from "@date-io/date-fns"; // choose your lib
+import DateFnsUtils from "@date-io/date-fns"; // choose your lib=
 
 interface DataProps {
   info: any;

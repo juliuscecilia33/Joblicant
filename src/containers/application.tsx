@@ -13,6 +13,16 @@ export function ApplicationContainer({ index, info }: DataProps) {
   console.log(openDetails);
   // console.log(info);
 
+  // 2021-07-11
+  const FormatDate = (d: any) => {
+    let year = d.substring(0, 4);
+    let month = d.substring(5, 7);
+    let date = d.substring(8);
+
+    let dateStr = month + "/" + date + "/" + year;
+    return dateStr;
+  };
+
   return (
     <>
       <Application>
@@ -20,7 +30,9 @@ export function ApplicationContainer({ index, info }: DataProps) {
           {info.JobTitle}
         </Application.SearchIDField>
         <Application.SearchField>{info.CompanyName}</Application.SearchField>
-        <Application.SearchField>{info.DateCompleted}</Application.SearchField>
+        <Application.SearchField>
+          {FormatDate(info.DateCompleted)}
+        </Application.SearchField>
         <Application.NoSearchField
           sent={info.Status === "Sent" ? true : false}
           rejected={info.Status === "Rejected" ? true : false}
@@ -49,7 +61,9 @@ export function ApplicationContainer({ index, info }: DataProps) {
           }
           accepted={info.Status === "Accepted" ? true : false}
         >
-          {info.InterviewDate === null ? info.Status : info.InterviewDate}
+          {info.InterviewDate === null
+            ? info.Status
+            : FormatDate(info.InterviewDate)}
         </Application.NoSearchField>
         <Application.NoSearchResult
           rejected={info.Result === "Rejected" ? true : false}
