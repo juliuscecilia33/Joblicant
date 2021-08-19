@@ -35,7 +35,32 @@ export function DetailsContainer({
     new Date(info.InterviewDate)
   );
 
-  console.log(info);
+  const handleSave = (information: any) => {
+    console.log("Saved");
+    console.log(information);
+    const params = JSON.stringify({
+      AppId: information.AppId,
+      JobTitle: jobTitle,
+      CompanyName: companyName,
+      DateCompleted: selectedDate,
+      Status: status,
+      InterviewDate: interviewDate,
+      Result: result,
+      Notes: notes,
+    });
+    axios
+      .put("http://127.0.0.1:8000/application/", params, {
+        headers: { "Content-Type": "application/json" },
+      })
+      .then((response) => {
+        console.log(response);
+        setOpenDetails(false);
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+        console.error("There was an error!", error);
+      });
+  };
 
   const handleStatusChange = (event: any) => {
     setStatus(event.target.value);
@@ -44,8 +69,6 @@ export function DetailsContainer({
   const handleResultChange = (event: any) => {
     setResult(event.target.value);
   };
-
-  console.log(openDetails);
 
   const DeleteApplication = (information: any) => {
     axios
@@ -162,6 +185,7 @@ export function DetailsContainer({
             onClick={() => DeleteApplication(info)}
           />
           <Details.Action
+            onClick={() => handleSave(info)}
             action="Save"
             icon="fas fa-check"
             background="linear-gradient(242.46deg, #16B4EB 9.2%, #50E3C2 89.53%)"
