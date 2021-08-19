@@ -17,6 +17,7 @@ class Application(models.Model):
     Status = models.CharField(max_length=100)
     InterviewDate = models.DateField(blank=True, null=True)
     Result = models.CharField(max_length=100, blank=True, null=True)
+    Notes = models.CharField(max_length=500, blank=True, null=True)
 
 class CommonInformation(models.Model):
     CommonId = models.AutoField(primary_key=True)

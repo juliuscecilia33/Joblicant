@@ -21,9 +21,11 @@ export function DetailsContainer({
 }: DataProps) {
   const [deleted, setDeleted] = useState<boolean | undefined>(false);
   const [errorMessage, setErrorMessage] = useState<string | undefined>("");
-  const [jobTitle, setJobTitle] = useState<string | undefined>("");
-  const [companyName, setCompanyName] = useState<string | undefined>("");
-  const [notes, setNotes] = useState<string | undefined>("");
+  const [jobTitle, setJobTitle] = useState<string | undefined>(info.JobTitle);
+  const [companyName, setCompanyName] = useState<string | undefined>(
+    info.CompanyName
+  );
+  const [notes, setNotes] = useState<string | undefined>(info.Notes);
   const [status, setStatus] = useState(info.Status);
   const [result, setResult] = useState(info.Result);
   const [selectedDate, handleDateChange] = useState(

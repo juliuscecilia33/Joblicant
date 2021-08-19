@@ -10,7 +10,8 @@ class ApplicationSerializer(serializers.ModelSerializer):
                   'DateCompleted',
                   'Status',
                   'InterviewDate',
-                  'Result')
+                  'Result',
+                  'Notes')
 
 class CommonInformationSerializer(serializers.ModelSerializer):
     class Meta:

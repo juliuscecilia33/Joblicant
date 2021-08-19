@@ -68,9 +68,7 @@ export function ApplicationContainer({ index, info }: DataProps) {
         >
           {info.Result === null ? info.Status : info.Result}
         </Application.NoSearchResult>
-        <Application.NoFilterField>
-          Hello these are my notes
-        </Application.NoFilterField>
+        <Application.NoFilterField>{info.Notes}</Application.NoFilterField>
         <Application.Actions
           openDetails={openDetails}
           setOpenDetails={setOpenDetails}
