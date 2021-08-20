@@ -14,6 +14,7 @@ interface DataProps {
 }
 
 export function NewAppContainer({ setOpenDetails, openDetails }: DataProps) {
+  const [errorMessage, setErrorMessage] = useState<string | undefined>("");
   const [jobTitle, setJobTitle] = useState<string | undefined>("");
   const [companyName, setCompanyName] = useState<string | undefined>("");
   const [notes, setNotes] = useState<string | undefined>("");
@@ -28,6 +29,32 @@ export function NewAppContainer({ setOpenDetails, openDetails }: DataProps) {
 
   const handleResultChange = (event: any) => {
     setResult(event.target.value);
+  };
+
+  const handlePost = () => {
+    console.log("Application Created");
+
+    const appbody = {
+      JobTitle: jobTitle,
+      CompanyName: companyName,
+      DateCompleted: FormatFormalDate(selectedDate),
+      Status: status,
+      InterviewDate: FormatFormalDate(interviewDate),
+      Result: result,
+      Notes: notes,
+    };
+
+    axios
+      .post("http://127.0.0.1:8000/application/", appbody)
+      .then((response) => {
+        console.log(response);
+        setOpenDetails(false);
+        window.location.reload();
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+        console.error("There was an error!", error);
+      });
   };
 
   const FormatDate = (d: any) => {
@@ -144,9 +171,9 @@ export function NewAppContainer({ setOpenDetails, openDetails }: DataProps) {
             onClick={() => setOpenDetails(false)}
           />
           <NewApp.Action
-            onClick={() => console.log("Created")}
+            onClick={() => handlePost()}
             action="Create"
-            icon="fas fa-check"
+            icon="fas fa-feather-alt"
             background="linear-gradient(242.46deg, #16B4EB 9.2%, #50E3C2 89.53%)"
           />
         </NewApp.Actions>
