@@ -6,6 +6,7 @@ import {
   CreateContainer,
 } from "../containers";
 import { EmptyContainer } from "./empty";
+import { NewAppContainer } from "./newApp";
 
 interface DataProps {
   data: any;
@@ -22,6 +23,12 @@ export function DashboardContainer({ data }: DataProps) {
       <CreateContainer openCreate={openCreate} setOpenCreate={setOpenCreate} />
       <Dashboard>
         <FilteringContainer />
+        {openCreate && (
+          <NewAppContainer
+            openDetails={openCreate}
+            setOpenDetails={setOpenCreate}
+          />
+        )}
         {data.length === 0 ? (
           <EmptyContainer />
         ) : (
