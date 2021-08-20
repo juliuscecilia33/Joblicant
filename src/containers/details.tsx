@@ -38,23 +38,24 @@ export function DetailsContainer({
   const handleSave = (information: any) => {
     console.log("Saved");
     console.log(information);
-    const params = JSON.stringify({
+
+    const appbody = {
       AppId: information.AppId,
       JobTitle: jobTitle,
       CompanyName: companyName,
-      DateCompleted: selectedDate,
+      DateCompleted: FormatFormalDate(selectedDate),
       Status: status,
-      InterviewDate: interviewDate,
+      InterviewDate: FormatFormalDate(interviewDate),
       Result: result,
       Notes: notes,
-    });
+    };
+
     axios
-      .put("http://127.0.0.1:8000/application/", params, {
-        headers: { "Content-Type": "application/json" },
-      })
+      .put("http://127.0.0.1:8000/application/", appbody)
       .then((response) => {
         console.log(response);
         setOpenDetails(false);
+        window.location.reload();
       })
       .catch((error) => {
         setErrorMessage(error.message);
@@ -89,6 +90,20 @@ export function DetailsContainer({
     let month = d.getMonth() + 1;
     let year = d.getFullYear();
     let dateStr = month + "/" + date + "/" + year;
+    return dateStr;
+  };
+
+  const FormatFormalDate = (d: any) => {
+    let date = d.getDate();
+    let month = d.getMonth() + 1;
+    let year = d.getFullYear();
+    if (month <= 9) {
+      month = "0" + month;
+    }
+    if (date <= 9) {
+      date = "0" + date;
+    }
+    let dateStr = year + "-" + month + "-" + date;
     return dateStr;
   };
 
