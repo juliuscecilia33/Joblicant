@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { Dashboard } from "../components";
-import { FilteringContainer, ApplicationContainer } from "../containers";
+import {
+  FilteringContainer,
+  ApplicationContainer,
+  CreateContainer,
+} from "../containers";
 import { EmptyContainer } from "./empty";
 
 interface DataProps {
@@ -9,17 +13,23 @@ interface DataProps {
 
 export function DashboardContainer({ data }: DataProps) {
   console.log(data.length);
+  const [openCreate, setOpenCreate] = useState<boolean | undefined>(false);
+
+  console.log(openCreate);
 
   return (
-    <Dashboard>
-      <FilteringContainer />
-      {data.length === 0 ? (
-        <EmptyContainer />
-      ) : (
-        data.map((info: any, index: any) => (
-          <ApplicationContainer index={index} info={info} />
-        ))
-      )}
-    </Dashboard>
+    <>
+      <CreateContainer openCreate={openCreate} setOpenCreate={setOpenCreate} />
+      <Dashboard>
+        <FilteringContainer />
+        {data.length === 0 ? (
+          <EmptyContainer />
+        ) : (
+          data.map((info: any, index: any) => (
+            <ApplicationContainer index={index} info={info} />
+          ))
+        )}
+      </Dashboard>
+    </>
   );
 }

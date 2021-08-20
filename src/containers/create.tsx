@@ -1,10 +1,15 @@
 import React from "react";
 import { Create } from "../components";
 
-export function CreateContainer() {
+interface CreateProps {
+  openCreate: boolean;
+  setOpenCreate: any;
+}
+
+export function CreateContainer({ openCreate, setOpenCreate }: CreateProps) {
   return (
     <Create>
-      <Create.Button />
+      <Create.Button onClick={() => setOpenCreate(true)} />
     </Create>
   );
 }
