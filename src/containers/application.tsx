@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -8,14 +7,12 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Dialog from "@material-ui/core/Dialog";
-import PersonIcon from "@material-ui/icons/Person";
-import AddIcon from "@material-ui/icons/Add";
-import Typography from "@material-ui/core/Typography";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteSweepIcon from "@material-ui/icons/DeleteSweep";
 import { blue } from "@material-ui/core/colors";
 import { Application } from "../components";
 import { DetailsContainer } from "./details";
+import axios from "axios";
 
 interface DataProps {
   index: number;
@@ -26,6 +23,8 @@ export interface SimpleDialogProps {
   open: boolean;
   selectedValue: string;
   onClose: (value: string) => void;
+  info: any;
+  setOpen: any;
 }
 
 const useStyles = makeStyles({
@@ -41,7 +40,10 @@ const useStyles = makeStyles({
 function SimpleDialog(props: SimpleDialogProps) {
   const classes = useStyles();
 
-  const { onClose, selectedValue, open } = props;
+  const { onClose, selectedValue, open, info, setOpen } = props;
+  const [errorMessage, setErrorMessage] = useState<string | undefined>("");
+
+  console.log(info);
 
   const handleClose = () => {
     onClose(selectedValue);
@@ -52,7 +54,19 @@ function SimpleDialog(props: SimpleDialogProps) {
   };
 
   const deleteApplication = () => {
-    console.log("Deleteing Application");
+    console.log("Deleting Application");
+
+    axios
+      .delete("http://127.0.0.1:8000/application/" + info.AppId)
+      .then((response) => {
+        console.log(response);
+        setOpen(false);
+        window.location.reload();
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+        console.error("There was an error!", error);
+      });
   };
 
   return (
@@ -64,7 +78,7 @@ function SimpleDialog(props: SimpleDialogProps) {
       <div className={classes.popup}>
         <DialogTitle id="simple-dialog-title">Actions</DialogTitle>
         <List>
-          <ListItem button onClick={() => deleteApplication()}>
+          <ListItem button onClick={() => editApplication()}>
             <ListItemAvatar>
               <Avatar className={classes.avatar}>
                 <EditIcon />
@@ -72,7 +86,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             </ListItemAvatar>
             <ListItemText primary="Edit" />
           </ListItem>
-          <ListItem button onClick={() => editApplication()}>
+          <ListItem button onClick={() => deleteApplication()}>
             <ListItemAvatar>
               <Avatar className={classes.avatar}>
                 <DeleteSweepIcon />
@@ -168,7 +182,9 @@ export function ApplicationContainer({ index, info }: DataProps) {
         <SimpleDialog
           selectedValue={selectedValue}
           open={open}
+          setOpen={setOpen}
           onClose={handleClose}
+          info={info}
         />
       </Application>
       {openDetails && (
