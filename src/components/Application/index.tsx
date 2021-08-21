@@ -16,6 +16,7 @@ type Props = {
   id?: any;
   openDetails?: boolean;
   setOpenDetails?: (open: boolean) => any;
+  handleClickOpen?: any;
   sent?: boolean;
   processing?: boolean;
   rejected?: boolean;
@@ -97,6 +98,7 @@ Application.NoFilterField = function ApplicationNoFilterField({
 };
 
 Application.Actions = function ApplicationActions({
+  handleClickOpen,
   openDetails,
   setOpenDetails,
   children,
@@ -104,7 +106,7 @@ Application.Actions = function ApplicationActions({
 }: Props) {
   return (
     <Actions {...restProps}>
-      <button>
+      <button onClick={() => handleClickOpen()}>
         <i className="fas fa-ellipsis-v"></i>
       </button>
       <button onClick={() => setOpenDetails!(!openDetails)}>
