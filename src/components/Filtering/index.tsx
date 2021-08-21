@@ -7,6 +7,8 @@ type Props = {
   children?: React.ReactNode;
   icon?: string;
   name?: string;
+  value?: string;
+  onChange?: any;
 };
 
 export default function Filtering({ children, ...restProps }: Props) {
@@ -14,6 +16,8 @@ export default function Filtering({ children, ...restProps }: Props) {
 }
 
 Filtering.Search = function SearchingFilter({
+  onChange,
+  value,
   name,
   children,
   ...restProps
@@ -25,7 +29,7 @@ Filtering.Search = function SearchingFilter({
         <i className="fas fa-sort-amount-up"></i>
         <i className="fas fa-sort-amount-down-alt"></i>
       </div>
-      <input placeholder={name} />
+      <input value={value} onChange={onChange} placeholder={name} />
     </Search>
   );
 };

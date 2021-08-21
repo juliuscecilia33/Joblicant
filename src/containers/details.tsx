@@ -36,8 +36,6 @@ export function DetailsContainer({
   );
 
   const handleSave = (information: any) => {
-    console.log("Saved");
-    console.log(information);
 
     const appbody = {
       AppId: information.AppId,

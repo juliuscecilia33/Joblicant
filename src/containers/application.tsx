@@ -47,8 +47,6 @@ function SimpleDialog(props: SimpleDialogProps) {
   const { onClose, selectedValue, open, info, setOpen, setOpenDetails } = props;
   const [errorMessage, setErrorMessage] = useState<string | undefined>("");
 
-  console.log(info);
-
   const handleClose = () => {
     onClose(selectedValue);
   };
@@ -59,7 +57,6 @@ function SimpleDialog(props: SimpleDialogProps) {
   };
 
   const deleteApplication = () => {
-    console.log("Deleting Application");
 
     axios
       .delete("http://127.0.0.1:8000/application/" + info.AppId)

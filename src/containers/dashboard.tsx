@@ -13,16 +13,14 @@ interface DataProps {
 }
 
 export function DashboardContainer({ data }: DataProps) {
-  console.log(data.length);
+  console.log(data);
   const [openCreate, setOpenCreate] = useState<boolean | undefined>(false);
-
-  console.log(openCreate);
 
   return (
     <>
       <CreateContainer openCreate={openCreate} setOpenCreate={setOpenCreate} />
       <Dashboard>
-        <FilteringContainer />
+        <FilteringContainer data={data} />
         {openCreate && (
           <NewAppContainer
             openDetails={openCreate}
