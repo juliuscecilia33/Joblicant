@@ -25,22 +25,26 @@ export interface SimpleDialogProps {
   onClose: (value: string) => void;
   info: any;
   setOpen: any;
+  setOpenDetails: any;
 }
 
 const useStyles = makeStyles({
   avatar: {
-    backgroundColor: blue[100],
-    color: blue[600],
+    backgroundColor: "#2A2F45",
+    color: "#50e3c2",
   },
   popup: {
     padding: "1rem",
+    backgroundColor: "#30364F",
+    color: "#ffffff",
+    border: "0.3px solid #50e3c2",
   },
 });
 
 function SimpleDialog(props: SimpleDialogProps) {
   const classes = useStyles();
 
-  const { onClose, selectedValue, open, info, setOpen } = props;
+  const { onClose, selectedValue, open, info, setOpen, setOpenDetails } = props;
   const [errorMessage, setErrorMessage] = useState<string | undefined>("");
 
   console.log(info);
@@ -50,7 +54,8 @@ function SimpleDialog(props: SimpleDialogProps) {
   };
 
   const editApplication = () => {
-    console.log("Editing Application");
+    setOpenDetails(true);
+    setOpen(false);
   };
 
   const deleteApplication = () => {
@@ -181,6 +186,7 @@ export function ApplicationContainer({ index, info }: DataProps) {
         />
         <SimpleDialog
           selectedValue={selectedValue}
+          setOpenDetails={setOpenDetails}
           open={open}
           setOpen={setOpen}
           onClose={handleClose}
