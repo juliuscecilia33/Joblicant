@@ -3,10 +3,11 @@ import { Filtering } from "../components";
 
 interface DataProps {
   data: any;
+  setData: any;
 }
 
-export function FilteringContainer({ data }: DataProps) {
-  console.log("Filtering Data: ", data);
+export function FilteringContainer({ setData, data }: DataProps) {
+  // console.log("Filtering Data: ", data);
   const [filteredJob, setFilteredJob] = useState("");
 
   const filterJob = (e: any) => {
@@ -17,13 +18,13 @@ export function FilteringContainer({ data }: DataProps) {
     for (let i = 0; i < data.length; i++) {
       console.log(data[i].JobTitle.toString().trim().toLowerCase());
       console.log(data[i].AppId.toString().trim().toLowerCase());
-      // data.filter(userInput);
-      console.log(
-        data[i].JobTitle.toString()
+      let filteredData = data.filter((app: any) =>
+        app.JobTitle.toString()
           .trim()
           .toLowerCase()
           .includes(userInput.toString().trim().toLowerCase())
       );
+      console.log("Filtered Data: ", filteredData);
     }
   };
 

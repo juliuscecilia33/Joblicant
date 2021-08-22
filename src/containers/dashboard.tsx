@@ -10,9 +10,10 @@ import { NewAppContainer } from "./newApp";
 
 interface DataProps {
   data: any;
+  setData: any;
 }
 
-export function DashboardContainer({ data }: DataProps) {
+export function DashboardContainer({ data, setData }: DataProps) {
   console.log(data);
   const [openCreate, setOpenCreate] = useState<boolean | undefined>(false);
 
@@ -20,7 +21,7 @@ export function DashboardContainer({ data }: DataProps) {
     <>
       <CreateContainer openCreate={openCreate} setOpenCreate={setOpenCreate} />
       <Dashboard>
-        <FilteringContainer data={data} />
+        <FilteringContainer setData={setData} data={data} />
         {openCreate && (
           <NewAppContainer
             openDetails={openCreate}

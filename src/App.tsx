@@ -28,7 +28,7 @@ function App() {
     <>
       <DataContext.Provider value={{ data, setData }}>
         <NavbarContainer />
-        <DashboardContainer data={data} />
+        <DashboardContainer data={data} setData={setData} />
       </DataContext.Provider>
     </>
   );
