@@ -11,9 +11,16 @@ import { NewAppContainer } from "./newApp";
 interface DataProps {
   data: any;
   setData: any;
+  originalData: any;
+  setOriginalData: any;
 }
 
-export function DashboardContainer({ data, setData }: DataProps) {
+export function DashboardContainer({
+  data,
+  setData,
+  originalData,
+  setOriginalData,
+}: DataProps) {
   console.log(data);
   const [openCreate, setOpenCreate] = useState<boolean | undefined>(false);
 
@@ -21,7 +28,12 @@ export function DashboardContainer({ data, setData }: DataProps) {
     <>
       <CreateContainer openCreate={openCreate} setOpenCreate={setOpenCreate} />
       <Dashboard>
-        <FilteringContainer setData={setData} data={data} />
+        <FilteringContainer
+          originalData={originalData}
+          setOriginalData={setOriginalData}
+          setData={setData}
+          data={data}
+        />
         {openCreate && (
           <NewAppContainer
             openDetails={openCreate}

@@ -17,9 +17,11 @@ function App() {
   // Status: "Sent";
 
   const [data, setData] = useState([]);
+  const [originalData, setOriginalData] = useState([]);
 
   useEffect(() => {
     axios.get("http://127.0.0.1:8000/application/").then((response) => {
+      setOriginalData(response.data);
       setData(response.data);
     });
   }, []);
@@ -28,7 +30,12 @@ function App() {
     <>
       <DataContext.Provider value={{ data, setData }}>
         <NavbarContainer />
-        <DashboardContainer data={data} setData={setData} />
+        <DashboardContainer
+          originalData={originalData}
+          setOriginalData={setOriginalData}
+          data={data}
+          setData={setData}
+        />
       </DataContext.Provider>
     </>
   );

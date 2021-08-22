@@ -1,31 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Filtering } from "../components";
+import axios from "axios";
 
 interface DataProps {
   data: any;
   setData: any;
+  originalData: any;
+  setOriginalData: any;
 }
 
-export function FilteringContainer({ setData, data }: DataProps) {
+export function FilteringContainer({
+  originalData,
+  setOriginalData,
+  setData,
+  data,
+}: DataProps) {
   // console.log("Filtering Data: ", data);
   const [filteredJob, setFilteredJob] = useState("");
 
   const filterJob = (e: any) => {
     console.log(e.target.value);
-    let userInput = e.target.value;
     setFilteredJob(e.target.value);
 
-    for (let i = 0; i < data.length; i++) {
-      console.log(data[i].JobTitle.toString().trim().toLowerCase());
-      console.log(data[i].AppId.toString().trim().toLowerCase());
-      let filteredData = data.filter((app: any) =>
-        app.JobTitle.toString()
-          .trim()
-          .toLowerCase()
-          .includes(userInput.toString().trim().toLowerCase())
-      );
-      console.log("Filtered Data: ", filteredData);
+    if (e.target.value.trim() === "") {
+      console.log("Empty");
+      console.log("Original Data: ", originalData);
+      setData(originalData);
     }
+
+    let filteredData = data.filter((app: any) =>
+      app.JobTitle.toString()
+        .trim()
+        .toLowerCase()
+        .includes(filteredJob.toString().trim().toLowerCase())
+    );
+    console.log("Filtered Data: ", filteredData);
+    // setData(filteredData);
   };
 
   return (
