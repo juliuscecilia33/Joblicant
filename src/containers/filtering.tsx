@@ -26,16 +26,16 @@ export function FilteringContainer({
       console.log("Empty");
       console.log("Original Data: ", originalData);
       setData(originalData);
+    } else {
+      let filteredData = data.filter((app: any) =>
+        app.JobTitle.toString()
+          .trim()
+          .toLowerCase()
+          .includes(filteredJob.toString().trim().toLowerCase())
+      );
+      console.log("Filtered Data: ", filteredData);
+      setData(filteredData);
     }
-
-    let filteredData = data.filter((app: any) =>
-      app.JobTitle.toString()
-        .trim()
-        .toLowerCase()
-        .includes(filteredJob.toString().trim().toLowerCase())
-    );
-    console.log("Filtered Data: ", filteredData);
-    // setData(filteredData);
   };
 
   return (
