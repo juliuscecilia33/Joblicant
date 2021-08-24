@@ -21,8 +21,10 @@ export function DashboardContainer({
   originalData,
   setOriginalData,
 }: DataProps) {
-  console.log(data);
+  console.log("Dashboard Data: ", data);
   const [openCreate, setOpenCreate] = useState<boolean | undefined>(false);
+  const [idData, setIdData] = useState(null);
+  console.log("Id Data: ", idData);
 
   return (
     <>
@@ -33,6 +35,8 @@ export function DashboardContainer({
           setOriginalData={setOriginalData}
           setData={setData}
           data={data}
+          idData={idData}
+          setIdData={setIdData}
         />
         {openCreate && (
           <NewAppContainer
@@ -42,6 +46,8 @@ export function DashboardContainer({
         )}
         {data.length === 0 ? (
           <EmptyContainer />
+        ) : idData ? (
+          <ApplicationContainer index={idData.AppId} info={idData} />
         ) : (
           data.map((info: any, index: any) => (
             <ApplicationContainer index={index} info={info} />

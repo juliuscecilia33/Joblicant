@@ -7,6 +7,8 @@ interface DataProps {
   setData: any;
   originalData: any;
   setOriginalData: any;
+  idData: any;
+  setIdData: any;
 }
 
 export function FilteringContainer({
@@ -14,6 +16,8 @@ export function FilteringContainer({
   setOriginalData,
   setData,
   data,
+  idData,
+  setIdData,
 }: DataProps) {
   // console.log("Filtering Data: ", data);
   const [filteredJob, setFilteredJob] = useState("");
@@ -22,6 +26,7 @@ export function FilteringContainer({
     console.log(e.target.value);
     setFilteredJob(e.target.value);
     // setData(originalData);
+    let filteredData;
 
     for (let i = 0; i < originalData.length; i++) {
       if (e.target.value.trim() === "") {
@@ -32,11 +37,10 @@ export function FilteringContainer({
         e.target.value.toString().trim() === originalData[i].AppId.toString()
       ) {
         console.log("JobID: ", originalData[i].AppId.toString());
-        let filteredData = data[i];
-        console.log("Filtered Data Number: ", filteredData);
-        setData(filteredData);
+        filteredData = data[i];
+        setIdData(filteredData);
       } else {
-        let filteredData = data.filter((app: any) =>
+        filteredData = data.filter((app: any) =>
           app.JobTitle.toString()
             .trim()
             .toLowerCase()
