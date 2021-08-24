@@ -21,20 +21,30 @@ export function FilteringContainer({
   const filterJob = (e: any) => {
     console.log(e.target.value);
     setFilteredJob(e.target.value);
+    // setData(originalData);
 
-    if (e.target.value.trim() === "") {
-      console.log("Empty");
-      console.log("Original Data: ", originalData);
-      setData(originalData);
-    } else {
-      let filteredData = data.filter((app: any) =>
-        app.JobTitle.toString()
-          .trim()
-          .toLowerCase()
-          .includes(filteredJob.toString().trim().toLowerCase())
-      );
-      console.log("Filtered Data: ", filteredData);
-      setData(filteredData);
+    for (let i = 0; i < originalData.length; i++) {
+      if (e.target.value.trim() === "") {
+        console.log("Empty");
+        console.log("Original Data: ", originalData);
+        setData(originalData);
+      } else if (
+        e.target.value.toString().trim() === originalData[i].AppId.toString()
+      ) {
+        console.log("JobID: ", originalData[i].AppId.toString());
+        let filteredData = data[i];
+        console.log("Filtered Data Number: ", filteredData);
+        setData(filteredData);
+      } else {
+        let filteredData = data.filter((app: any) =>
+          app.JobTitle.toString()
+            .trim()
+            .toLowerCase()
+            .includes(e.target.value.toString().trim().toLowerCase())
+        );
+        console.log("Filtered Data text: ", filteredData);
+        setData(filteredData);
+      }
     }
   };
 
