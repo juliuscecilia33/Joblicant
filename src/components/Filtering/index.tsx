@@ -1,4 +1,5 @@
 import React from "react";
+import { AnyStyledComponent } from "styled-components";
 
 import { Container, Search, NoSearch, NoFilter } from "./styles/filtering";
 
@@ -9,6 +10,8 @@ type Props = {
   name?: string;
   value?: string;
   onChange?: any;
+  onFocus?: any;
+  onBlur?: any;
 };
 
 export default function Filtering({ children, ...restProps }: Props) {
@@ -16,6 +19,9 @@ export default function Filtering({ children, ...restProps }: Props) {
 }
 
 Filtering.Search = function SearchingFilter({
+  onClick,
+  onFocus,
+  onBlur,
   onChange,
   value,
   name,
@@ -29,7 +35,16 @@ Filtering.Search = function SearchingFilter({
         <i className="fas fa-sort-amount-up"></i>
         <i className="fas fa-sort-amount-down-alt"></i>
       </div>
-      <input value={value} onChange={onChange} placeholder={name} />
+      <input
+        value={value}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        onChange={onChange}
+        placeholder={name}
+      />
+      <button onClick={onClick}>
+        <i className="fas fa-times"></i>
+      </button>
     </Search>
   );
 };

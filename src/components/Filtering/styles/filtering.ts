@@ -24,6 +24,7 @@ export const Search = styled.div`
   flex-direction: column;
   justify-content: center;
   padding-right: 3rem;
+  position: relative;
 
   div {
     display: flex;
@@ -69,6 +70,27 @@ export const Search = styled.div`
       background: rgba(255, 255, 255, 0.35);
       &::placeholder {
         color: #ffffff;
+      }
+    }
+  }
+
+  button {
+    position: absolute;
+    top: 55%;
+    right: 21.5%;
+    outline: none;
+    border: none;
+    z-index: 100;
+    background: none;
+    cursor: pointer;
+
+    i {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.15);
+      transition: 0.5s ease all;
+
+      &:hover {
+        color: #ff708a;
       }
     }
   }
