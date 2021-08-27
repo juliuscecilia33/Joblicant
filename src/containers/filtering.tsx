@@ -101,7 +101,9 @@ export function FilteringContainer({
         }}
         onFocus={() => resetData()}
       />
-      <Filtering.Search name="Date Completed" />
+      <Filtering.DateFilterContainer>
+        <Filtering.DateSearch name="Date Completed" />
+      </Filtering.DateFilterContainer>
       <Filtering.NoSearch name="Status" />
       <Filtering.NoSearch name="Interview" />
       <Filtering.NoSearch name="Result" />
