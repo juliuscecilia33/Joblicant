@@ -25,7 +25,7 @@ export const DateFilterContainer = styled.div`
     z-index: 5;
     position: absolute;
     top: 50%;
-    transform: translateY(-10%);
+    transform: translateY(-17%);
     left: 0;
     opacity: 0;
     width: 80%;

@@ -114,6 +114,7 @@ Filtering.DateSearch = function DateSearchingFilter({
         onBlur={onBlur}
         onChange={onChange}
         placeholder={name}
+        disabled={true}
       />
       <button onClick={onClick}>
         <i className="fas fa-times"></i>
