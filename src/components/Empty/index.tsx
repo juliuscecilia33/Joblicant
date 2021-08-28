@@ -9,7 +9,7 @@ type Props = {
 export default function Empty({ children, ...restProps }: Props) {
   return (
     <Container {...restProps}>
-      <h2>Create your Application:</h2>
+      <h2>No Applications seen! Create one above</h2>
       {children}
     </Container>
   );

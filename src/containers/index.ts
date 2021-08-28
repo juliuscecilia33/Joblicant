@@ -5,3 +5,5 @@ export { DashboardContainer } from "./dashboard";
 export { DetailsContainer } from "./details";
 export { ApplicationContainer } from "./application";
 export { EmptyContainer } from "./empty";
+export { EmptyFilterContainer } from "./emptyFilter";
+export { NewAppContainer } from "./newApp";

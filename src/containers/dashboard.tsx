@@ -4,9 +4,10 @@ import {
   FilteringContainer,
   ApplicationContainer,
   CreateContainer,
+  NewAppContainer,
+  EmptyContainer,
+  EmptyFilterContainer,
 } from "../containers";
-import { EmptyContainer } from "./empty";
-import { NewAppContainer } from "./newApp";
 
 interface DataProps {
   data: any;
@@ -44,8 +45,10 @@ export function DashboardContainer({
             setOpenDetails={setOpenCreate}
           />
         )}
-        {data.length === 0 ? (
+        {data.length === 0 && originalData.length === 0 ? (
           <EmptyContainer />
+        ) : data.length === 0 ? (
+          <EmptyFilterContainer />
         ) : idData ? (
           <ApplicationContainer index={idData.AppId} info={idData} />
         ) : (
