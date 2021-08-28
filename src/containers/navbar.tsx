@@ -1,11 +1,23 @@
 import React, { useState } from "react";
 import { Navbar } from "../components";
 
-export function NavbarContainer() {
-  const [applications, setApplications] = useState(true);
-  const [calendar, setCalendar] = useState(false);
-  const [information, setInformation] = useState(false);
+interface SetProps {
+  setApplications: any;
+  applications: any;
+  calendar: any;
+  setCalendar: any;
+  information: any;
+  setInformation: any;
+}
 
+export function NavbarContainer({
+  setApplications,
+  applications,
+  calendar,
+  setCalendar,
+  information,
+  setInformation,
+}: SetProps) {
   return (
     <Navbar>
       <Navbar.Logo />

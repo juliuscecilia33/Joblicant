@@ -17,15 +17,7 @@ interface DataProps {
   setIdData: any;
 }
 
-export function FilteringContainer({
-  originalData,
-  setOriginalData,
-  setData,
-  data,
-  idData,
-  setIdData,
-}: DataProps) {
-  // console.log("Filtering Data: ", data);
+export function FilteringContainer({ originalData, setData, data }: DataProps) {
   const [filteredJob, setFilteredJob] = useState("");
   const [filteredCompany, setFilteredCompany] = useState("");
   const [filteredDate, handleFilteredDateChange] = useState(new Date());
@@ -93,17 +85,6 @@ export function FilteringContainer({
     console.log("FILTERED DATA: ", filteredData);
     setData(filteredData);
   }, [filteredDate]);
-
-  const filterDate = () => {
-    let filteredData;
-    console.log("Filtered Date: ", filteredDate);
-    // filteredData = data.filter((app: any) =>
-    //   app.DateCompleted
-    //     .includes()
-    // );
-    // console.log("Filtered Data text: ", filteredData);
-    // setData(filteredData);
-  };
 
   const filterCompany = (e: any) => {
     console.log(e.target.value);
