@@ -7,3 +7,4 @@ export { ApplicationContainer } from "./application";
 export { EmptyContainer } from "./empty";
 export { EmptyFilterContainer } from "./emptyFilter";
 export { NewAppContainer } from "./newApp";
+export { CalendarContainer } from "./calendar";

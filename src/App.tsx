@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { NavbarContainer, DashboardContainer } from "./containers";
+import {
+  NavbarContainer,
+  DashboardContainer,
+  CalendarContainer,
+} from "./containers";
 import { DataContext } from "./context/data";
 import axios from "axios";
 import { Dashboard } from "./components";
@@ -16,7 +20,7 @@ function App() {
       setOriginalData(response.data);
       setData(response.data);
     });
-  }, []);
+  }, [setApplications, applications]);
 
   return (
     <>
@@ -37,7 +41,7 @@ function App() {
             setData={setData}
           />
         ) : calendar ? (
-          <Dashboard />
+          <CalendarContainer />
         ) : information ? (
           <Dashboard />
         ) : (
