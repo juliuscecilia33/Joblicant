@@ -10,6 +10,9 @@ import {
   WeekView,
   MonthView,
   Appointments,
+  Toolbar,
+  DateNavigator,
+  TodayButton,
 } from "@devexpress/dx-react-scheduler-material-ui";
 
 interface DataProps {
@@ -70,7 +73,9 @@ export function CalendarContainer({}) {
               endDayHour={19}
             />
             <MonthView />
-
+            <Toolbar />
+            <DateNavigator />
+            <TodayButton />
             <Appointments />
           </Scheduler>
         </Paper>
