@@ -41,7 +41,10 @@ function App() {
             setData={setData}
           />
         ) : calendar ? (
-          <CalendarContainer />
+          <CalendarContainer
+            originalData={originalData}
+            setOriginalData={setOriginalData}
+          />
         ) : information ? (
           <Dashboard />
         ) : (
