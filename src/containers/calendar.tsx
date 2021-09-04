@@ -7,17 +7,19 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { ViewState } from "@devexpress/dx-react-scheduler";
 import {
   Scheduler,
-  WeekView,
   MonthView,
   Appointments,
+  Resources,
   Toolbar,
   DateNavigator,
   TodayButton,
+  AppointmentTooltip,
 } from "@devexpress/dx-react-scheduler-material-ui";
 import { withStyles, Theme, createStyles } from "@material-ui/core";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import { indigo, blue, teal, red } from "@material-ui/core/colors";
 import { WithStyles } from "@material-ui/styles";
+import classNames from "clsx";
 
 interface ViewProps {
   currentViewName: any;
@@ -123,6 +125,39 @@ export function CalendarContainer({
       },
     });
 
+  const Appointment = withStyles(styles)(
+    ({ classes, data, ...restProps }: AppointmentProps) => (
+      <Appointments.Appointment
+        {...restProps}
+        className={classNames({
+          [classes.highPriorityAppointment]: data.status === "Interview[3]",
+          [classes.mediumPriorityAppointment]: data.status === "Interview[2]",
+          [classes.lowPriorityAppointment]: data.status === "Interview[1]",
+          [classes.appointment]: true,
+        })}
+        data={data}
+      />
+    )
+  );
+
+  const AppointmentContent = withStyles(styles, {
+    name: "AppointmentContent",
+  })(({ classes, data, ...restProps }: AppointmentContentProps) => {
+    return (
+      <Appointments.AppointmentContent {...restProps} data={data}>
+        <div className={classes.container}>
+          <div className={classes.text}>{data.title}</div>
+          <div className={classNames(classes.text, classes.content)}>
+            {`Status: ${data.status}`}
+          </div>
+          <div className={classNames(classes.text, classes.content)}>
+            {`Result: ${data.result}`}
+          </div>
+        </div>
+      </Appointments.AppointmentContent>
+    );
+  });
+
   const FormatFormalDate = (d: any) => {
     let date = d.getDate();
     let month = d.getMonth() + 1;
@@ -141,10 +176,6 @@ export function CalendarContainer({
     WithStyles<typeof styles>;
   type AppointmentContentProps = Appointments.AppointmentContentProps &
     WithStyles<typeof styles>;
-  type TimeTableCellProps = MonthView.TimeTableCellProps &
-    WithStyles<typeof styles>;
-  type DayScaleCellProps = MonthView.DayScaleCellProps &
-    WithStyles<typeof styles>;
 
   return (
     <>
@@ -160,7 +191,12 @@ export function CalendarContainer({
             <Toolbar />
             <DateNavigator />
             <TodayButton />
-            <Appointments />
+            <Appointments
+              appointmentComponent={Appointment}
+              appointmentContentComponent={AppointmentContent}
+            />
+            <AppointmentTooltip showCloseButton />
+            <Resources data={resources} />
           </Scheduler>
         </Paper>
       </CalendarDashboard>
