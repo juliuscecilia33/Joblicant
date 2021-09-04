@@ -4,6 +4,9 @@ import Paper from "@material-ui/core/Paper";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
+
 import { ViewState } from "@devexpress/dx-react-scheduler";
 import {
   Scheduler,
@@ -17,7 +20,7 @@ import {
 } from "@devexpress/dx-react-scheduler-material-ui";
 import { withStyles, Theme, createStyles } from "@material-ui/core";
 import { fade } from "@material-ui/core/styles/colorManipulator";
-import { indigo, blue, teal, red } from "@material-ui/core/colors";
+import { indigo, blue, teal, red, green } from "@material-ui/core/colors";
 import { WithStyles } from "@material-ui/styles";
 import classNames from "clsx";
 
@@ -77,8 +80,8 @@ export function CalendarContainer({
         { id: "Sent", text: "Sent", color: indigo },
         { id: "Online Assessment", text: "Online Assessment", color: blue },
         { id: "Interview[1]", text: "Interview[1]", color: teal },
-        { id: "Interview[2]", text: "Interview[2]", color: teal },
-        { id: "Interview[3]", text: "Interview[3]", color: teal },
+        { id: "Interview[2]", text: "Interview[2]", color: indigo },
+        { id: "Interview[3]", text: "Interview[3]", color: green },
       ],
     },
     {
@@ -90,6 +93,12 @@ export function CalendarContainer({
       ],
     },
   ];
+
+  const darkTheme = createTheme({
+    palette: {
+      type: "dark",
+    },
+  });
 
   const styles = ({ palette }: Theme) =>
     createStyles({
@@ -187,27 +196,31 @@ export function CalendarContainer({
 
   return (
     <>
-      <CalendarDashboard>
-        <Paper>
-          <Scheduler data={data} height={700}>
-            <ViewState
-              defaultCurrentDate={FormatFormalDate(new Date())}
-              currentViewName={currentViewName}
-            />
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
 
-            <MonthView />
-            <Toolbar />
-            <DateNavigator />
-            <TodayButton />
-            <Appointments
-              appointmentComponent={Appointment}
-              appointmentContentComponent={AppointmentContent}
-            />
-            <AppointmentTooltip showCloseButton />
-            <Resources data={resources} />
-          </Scheduler>
-        </Paper>
-      </CalendarDashboard>
+        <CalendarDashboard>
+          <Paper>
+            <Scheduler data={data} height={700}>
+              <ViewState
+                defaultCurrentDate={FormatFormalDate(new Date())}
+                currentViewName={currentViewName}
+              />
+
+              <MonthView />
+              <Toolbar />
+              <DateNavigator />
+              <TodayButton />
+              <Appointments
+                appointmentComponent={Appointment}
+                appointmentContentComponent={AppointmentContent}
+              />
+              <AppointmentTooltip showCloseButton />
+              <Resources data={resources} />
+            </Scheduler>
+          </Paper>
+        </CalendarDashboard>
+      </ThemeProvider>
     </>
   );
 }
