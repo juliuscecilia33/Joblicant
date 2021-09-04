@@ -16,7 +16,8 @@ import {
 } from "@devexpress/dx-react-scheduler-material-ui";
 import { withStyles, Theme, createStyles } from "@material-ui/core";
 import { fade } from "@material-ui/core/styles/colorManipulator";
-import { indigo, blue, teal } from "@material-ui/core/colors";
+import { indigo, blue, teal, red } from "@material-ui/core/colors";
+import { WithStyles } from "@material-ui/styles";
 
 interface ViewProps {
   currentViewName: any;
@@ -27,6 +28,12 @@ interface DataProps {
   originalData: any;
   setOriginalData: any;
 }
+
+// title: 'Prepare 2015 Marketing Plan',
+// startDate: new Date(2018, 5, 25, 13, 0),
+// endDate: new Date(2018, 5, 25, 13, 30),
+// priority: 2,
+// location: 'Room 3',
 
 export function CalendarContainer({
   originalData,
@@ -52,23 +59,27 @@ export function CalendarContainer({
 
   const [data, setData] = useState(schedulerData);
 
-  const ExternalViewSwitcher = ({ currentViewName, onChange }: ViewProps) => (
-    <RadioGroup
-      aria-label="Views"
-      style={{ flexDirection: "row" }}
-      name="views"
-      value={currentViewName}
-      onChange={onChange}
-    >
-      <FormControlLabel value="Week" control={<Radio />} label="Week" />
-      <FormControlLabel
-        value="Work Week"
-        control={<Radio />}
-        label="Work Week"
-      />
-      <FormControlLabel value="Month" control={<Radio />} label="Month" />
-    </RadioGroup>
-  );
+  const resources = [
+    {
+      fieldName: "status",
+      title: "Status",
+      instances: [
+        { id: "Sent", text: "Sent", color: indigo },
+        { id: "Online Assessment", text: "Online Assessment", color: blue },
+        { id: "Interview[1]", text: "Interview[1]", color: teal },
+        { id: "Interview[2]", text: "Interview[2]", color: teal },
+        { id: "Interview[3]", text: "Interview[3]", color: teal },
+      ],
+    },
+    {
+      fieldName: "result",
+      title: "Result",
+      instances: [
+        { id: "Accepted", text: "Accepted", color: teal },
+        { id: "Rejected", text: "Rejected", color: red },
+      ],
+    },
+  ];
 
   const styles = ({ palette }: Theme) =>
     createStyles({
@@ -112,33 +123,43 @@ export function CalendarContainer({
       },
     });
 
+  const FormatFormalDate = (d: any) => {
+    let date = d.getDate();
+    let month = d.getMonth() + 1;
+    let year = d.getFullYear();
+    if (month <= 9) {
+      month = "0" + month;
+    }
+    if (date <= 9) {
+      date = "0" + date;
+    }
+    let dateStr = year + "-" + month + "-" + date;
+    return dateStr;
+  };
+
+  type AppointmentProps = Appointments.AppointmentProps &
+    WithStyles<typeof styles>;
+  type AppointmentContentProps = Appointments.AppointmentContentProps &
+    WithStyles<typeof styles>;
+  type TimeTableCellProps = MonthView.TimeTableCellProps &
+    WithStyles<typeof styles>;
+  type DayScaleCellProps = MonthView.DayScaleCellProps &
+    WithStyles<typeof styles>;
+
   return (
     <>
       <CalendarDashboard>
         <Paper>
           <Scheduler data={data} height={660}>
             <ViewState
-              defaultCurrentDate="2021-08-01"
+              defaultCurrentDate={FormatFormalDate(new Date())}
               currentViewName={currentViewName}
-            />
-            <WeekView startDayHour={10} endDayHour={19} />
-            <WeekView
-              name="Work Week"
-              excludedDays={[0, 6]}
-              startDayHour={9}
-              endDayHour={19}
             />
 
             <MonthView />
             <Toolbar />
             <DateNavigator />
             <TodayButton />
-            <div style={{ paddingLeft: "1.4rem", paddingTop: "1rem" }}>
-              <ExternalViewSwitcher
-                currentViewName={currentViewName}
-                onChange={(e: any) => setCurrentViewName(e.target.value)}
-              />
-            </div>
             <Appointments />
           </Scheduler>
         </Paper>
