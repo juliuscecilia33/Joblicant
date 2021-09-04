@@ -43,7 +43,15 @@ export function CalendarContainer({
 }: DataProps) {
   const [currentViewName, setCurrentViewName] = useState("Month");
 
-  const schedulerData: any = [];
+  const schedulerData: any = [
+    {
+      title: "Software Engineer: Facebook",
+      startDate: "2021-09-10",
+      endDate: "2021-09-11",
+      status: "Interview[1]",
+      result: "Rejected",
+    },
+  ];
   const calendarData: any = [];
 
   originalData.map((info: any, index: Number) => {
@@ -59,7 +67,7 @@ export function CalendarContainer({
 
   console.log("calendar data: ", calendarData);
 
-  const [data, setData] = useState(schedulerData);
+  const [data, setData] = useState(calendarData);
 
   const resources = [
     {
@@ -181,7 +189,7 @@ export function CalendarContainer({
     <>
       <CalendarDashboard>
         <Paper>
-          <Scheduler data={data} height={660}>
+          <Scheduler data={data} height={700}>
             <ViewState
               defaultCurrentDate={FormatFormalDate(new Date())}
               currentViewName={currentViewName}
