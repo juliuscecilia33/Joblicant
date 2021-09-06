@@ -8,3 +8,5 @@
 ![Joblicant](https://github.com/juliuscecilia33/Joblicant/blob/main/mockups/DetailedDashboard.png)
 
 ![Joblicant](https://github.com/juliuscecilia33/Joblicant/blob/main/mockups/Dashboard.png)
+
+![Joblicant](https://github.com/juliuscecilia33/Joblicant/blob/main/mockups/Calendar.png)
