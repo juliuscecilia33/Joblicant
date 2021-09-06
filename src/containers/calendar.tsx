@@ -30,12 +30,6 @@ interface DataProps {
   setOriginalData: any;
 }
 
-// title: 'Prepare 2015 Marketing Plan',
-// startDate: new Date(2018, 5, 25, 13, 0),
-// endDate: new Date(2018, 5, 25, 13, 30),
-// priority: 2,
-// location: 'Room 3',
-
 export function CalendarContainer({
   originalData,
   setOriginalData,
