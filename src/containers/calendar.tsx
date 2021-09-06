@@ -41,16 +41,6 @@ export function CalendarContainer({
   setOriginalData,
 }: DataProps) {
   const [currentViewName, setCurrentViewName] = useState("Month");
-
-  const schedulerData: any = [
-    {
-      title: "Software Engineer: Facebook",
-      startDate: "2021-09-10",
-      endDate: "2021-09-11",
-      status: "Interview[1]",
-      result: "Rejected",
-    },
-  ];
   const calendarData: any = [];
 
   originalData.map((info: any, index: Number) => {
@@ -197,7 +187,7 @@ export function CalendarContainer({
 
         <CalendarDashboard>
           <Paper>
-            <Scheduler data={data} height={700}>
+            <Scheduler data={data} height={730}>
               <ViewState
                 defaultCurrentDate={FormatFormalDate(new Date())}
                 currentViewName={currentViewName}
